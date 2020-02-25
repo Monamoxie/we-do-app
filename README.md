@@ -1,6 +1,6 @@
 # we-do
 
-> aravel/Vuejto do web app)s
+> A Laravel/Vuejto do web app
 
 ## Build Setup
 
