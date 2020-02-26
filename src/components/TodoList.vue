@@ -1,5 +1,6 @@
 <template>
   <div>
+      <input class="todo-input" type="text" placeholder="What needs to be done?">
      To do list goes here
   </div>
 </template>
@@ -14,8 +15,7 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+ 
+<style lang="scss">
  
 </style>
