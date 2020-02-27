@@ -1,19 +1,20 @@
 <template>
   <div class="hello">
     <input class="form-control todo-input" type="text" placeholder="What do you want to do?" v-model="newTodo" @keyup.enter="addTodo"/>
-    <div class="row mt-3 todos-wrapper">
-        <div v-for="(todo, index) in todos" :key="todo.id" class="todo-item">
-
-            <div class="todo-item-left">
-                <input type="checkbox" v-model="todo.completed">
-                <div class="todo-item-label" v-if="!todo.editing" @dblclick="editTodo(todo)" 
-                    :class="{ completed: todo.completed }">{{ todo.title }}</div>
-                <input v-else class="form-control todo-item-edit" ref="edit" type="text" v-model="todo.title" 
-                    @blur="submitEdit(todo)" @keyup.enter="submitEdit(todo)" @keyup.esc="cancelEdit(todo)" v-focus/>
+    <div class="mt-3 todos-wrapper">
+        <transition-group name="fade" enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
+            <div v-for="(todo, index) in todosFiltered" :key="todo.id" class="todo-item">
+                <div class="todo-item-left">
+                    <input type="checkbox" v-model="todo.completed">
+                    <div class="todo-item-label" v-if="!todo.editing" @dblclick="editTodo(todo)" 
+                        :class="{ completed: todo.completed }">{{ todo.title }}</div>
+                    <input v-else class="form-control todo-item-edit" ref="edit" type="text" v-model="todo.title" 
+                        @blur="submitEdit(todo)" @keyup.enter="submitEdit(todo)" @keyup.esc="cancelEdit(todo)" v-focus/>
+                </div>
+                
+                <div class="remove-item" @click="removeTodo(index)">&times;</div>
             </div>
-            
-            <div class="remove-item" @click="removeTodo(index)">&times;</div>
-        </div>
+        </transition-group>
     </div>
 
     <div class="extra-container">
@@ -38,17 +39,14 @@
             </button>
         </div>
 
-        <!-- <div>
+        <div>
             <transition name="fade">
                 <button v-if="showClearCompletedButton" @click="clearCompleted">
                     Clear Completed
                 </button>
             </transition>
-        </div> -->
-
-        <div>
-            Clear Completed
         </div>
+ 
     </div>
 
   </div>
@@ -97,62 +95,82 @@ export default {
 
         anyRemaining() {
             return this.remaining != 0
-        }
-    },
+        }, 
 
-  directives: {
-    focus: {
-        inserted: function(el) {
-            el.focus();
-        }
-    }
-  },
+        todosFiltered() { 
 
-  methods: {
+            if (this.filter === 'active') return this.todos.filter(todo => !todo.completed) 
+            else if (this.filter === 'completed') return this.todos.filter(todo => todo.completed) 
 
-    addTodo() {
-        if (this.newTodo.trim().length == 0) return
-        this.todos.push({
-            id: this.idForTodo,
-            title: this.newTodo,
-            completed: false,
-            editing: false,
-        });
-        this.newTodo = ''
-        this.idForTodo++
-    },
-
-    editTodo(todo) {
+            return this.todos 
+        },
         
-        this.beforeEditCache = todo.title
-        todo.editing = true 
+        showClearCompletedButton() {
+            // returns a sub array in todos where any of the todo has a completed property set to true. 
+            // count all and show the button if lenght > 0
+            return this.todos.filter(todo => todo.completed).length > 0
+        }
     },
 
-    submitEdit(todo) {
-        if (todo.title.trim() == '') this.beforeEditCache; 
-        todo.editing = false
-
+    directives: {
+        focus: {
+            inserted: function(el) {
+                el.focus();
+            }
+        }
     },
 
-    cancelEdit(todo) {
-        todo.title = this.beforeEditCache
-        todo.editing = false
-    },
+    methods: {
 
-    removeTodo(index) {
-        this.todos.splice(index, 1)
-    },
+        addTodo() {
+            if (this.newTodo.trim().length == 0) return
+            this.todos.push({
+                id: this.idForTodo,
+                title: this.newTodo,
+                completed: false,
+                editing: false,
+            });
+            this.newTodo = ''
+            this.idForTodo++
+        },
 
-    checkAllTodos() {
-        this.todos.forEach((todo) => todo.completed = event.target.checked)
+        editTodo(todo) {
+            
+            this.beforeEditCache = todo.title
+            todo.editing = true 
+        },
+
+        submitEdit(todo) {
+            if (todo.title.trim() == '') this.beforeEditCache; 
+            todo.editing = false
+
+        },
+
+        cancelEdit(todo) {
+            todo.title = this.beforeEditCache
+            todo.editing = false
+        },
+
+        removeTodo(index) {
+            this.todos.splice(index, 1)
+        },
+
+        checkAllTodos() {
+            this.todos.forEach((todo) => todo.completed = event.target.checked)
+        },
+
+        clearCompleted() {
+            this.todos = this.todos.filter(todo => todo.completed === false) // another way of using the filter method
+        }
+
     }
-
-  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
+    @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css');
     .todo-input {
         width: 100%;
         padding: 10px 18px;
@@ -175,7 +193,8 @@ export default {
         padding: 10px 12px;
         border-bottom: 1px dotted #ccc;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-between; 
+        animation-duration: 1.2s;
     }
 
     .remove-item {
@@ -250,6 +269,14 @@ export default {
     .active {
         background: rgb(4, 209, 4);
         color: #fff;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .2s;
+    }
+
+    .fade-enter-enter, .fade-leave-to {
+        opacity: 0;
     }
 
     
