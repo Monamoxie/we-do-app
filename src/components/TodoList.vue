@@ -19,11 +19,38 @@
     <div class="extra-container">
         <div>
             <label>
-                <input type="checkbox"> Check All
+                <input type="checkbox" :checked="!anyRemaining" @change="checkAllTodos"> Check All
             </label>
         </div>
         <div> {{ remaining }} items left</div>
     </div>
+
+    <div class="extra-container">
+        <div>
+            <button :class="{ active: filter === 'all' }" @click="filter = 'all'">
+                All
+            </button>
+            <button :class="{ active: filter === 'active' }" @click="filter = 'active'">
+                Active
+            </button>
+            <button :class="{ active: filter === 'completed' }" @click="filter = 'completed'">
+                Completed
+            </button>
+        </div>
+
+        <!-- <div>
+            <transition name="fade">
+                <button v-if="showClearCompletedButton" @click="clearCompleted">
+                    Clear Completed
+                </button>
+            </transition>
+        </div> -->
+
+        <div>
+            Clear Completed
+        </div>
+    </div>
+
   </div>
 </template>
 
@@ -39,6 +66,7 @@ export default {
         newTodo: '',
         idForTodo: 4, // Next added element will get id from here,
         beforeEditCache: '',
+        filter: 'all',
         todos: [
             {
                 'id': 1,
@@ -62,11 +90,15 @@ export default {
     }
   },
 
-  computed: {
-      remaining() {
-          return this.todos.filter(todo => !todo.completed).length
-      }
-  },
+    computed: {
+        remaining() {
+                return this.todos.filter(todo => !todo.completed).length
+        },
+
+        anyRemaining() {
+            return this.remaining != 0
+        }
+    },
 
   directives: {
     focus: {
@@ -109,6 +141,10 @@ export default {
 
     removeTodo(index) {
         this.todos.splice(index, 1)
+    },
+
+    checkAllTodos() {
+        this.todos.forEach((todo) => todo.completed = event.target.checked)
     }
 
   }
@@ -194,9 +230,15 @@ export default {
         font-size: 14px;
         background-color: white;
         appearance: none;
+        border: 1px solid #ccc;;
+        padding: 6px 25px;
+        margin-right: 3px;
+        border-radius: 4px;
+        cursor: pointer; 
 
         &:hover {
-        background: lightgreen;
+            background: rgb(4, 209, 4);
+            color: #fff;
         }
 
         &:focus {
@@ -206,7 +248,8 @@ export default {
     }
 
     .active {
-        background: lightgreen;
+        background: rgb(4, 209, 4);
+        color: #fff;
     }
 
     
