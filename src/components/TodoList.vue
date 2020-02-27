@@ -2,19 +2,27 @@
   <div class="hello">
     <input class="form-control todo-input" type="text" placeholder="What do you want to do?" v-model="newTodo" @keyup.enter="addTodo"/>
     <div class="mt-3 todos-wrapper">
-        <transition-group name="fade" enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
-            <div v-for="(todo, index) in todosFiltered" :key="todo.id" class="todo-item">
-                <div class="todo-item-left">
-                    <input type="checkbox" v-model="todo.completed">
-                    <div class="todo-item-label" v-if="!todo.editing" @dblclick="editTodo(todo)" 
-                        :class="{ completed: todo.completed }">{{ todo.title }}</div>
-                    <input v-else class="form-control todo-item-edit" ref="edit" type="text" v-model="todo.title" 
-                        @blur="submitEdit(todo)" @keyup.enter="submitEdit(todo)" @keyup.esc="cancelEdit(todo)" v-focus/>
-                </div>
+        <div v-if="todosFiltered.length">
+            <transition-group name="fade" enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
+            
+                <div v-for="(todo, index) in todosFiltered" :key="todo.id" class="todo-item">
+                    <div class="todo-item-left">
+                        <input type="checkbox" v-model="todo.completed">
+                        <div class="todo-item-label" v-if="!todo.editing" @dblclick="editTodo(todo)" 
+                            :class="{ completed: todo.completed }">{{ todo.title }}</div>
+                        <input v-else class="form-control todo-item-edit" ref="edit" type="text" v-model="todo.title" 
+                            @blur="submitEdit(todo)" @keyup.enter="submitEdit(todo)" @keyup.esc="cancelEdit(todo)" v-focus/>
+                    </div>
                 
-                <div class="remove-item" @click="removeTodo(index)">&times;</div>
-            </div>
-        </transition-group>
+                    <div class="remove-item" @click="removeTodo(index)">&times;</div>
+                </div>
+            </transition-group>
+        </div> 
+        <div v-else>
+            No record found
+        </div>
+        
+        
     </div>
 
     <div class="extra-container">
@@ -55,9 +63,6 @@
 <script>
 export default {
   name: 'TodoList',
-  props: {
-    msg: String
-  },
 
   data () {
     return {
@@ -271,13 +276,7 @@ export default {
         color: #fff;
     }
 
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .2s;
-    }
-
-    .fade-enter-enter, .fade-leave-to {
-        opacity: 0;
-    }
+    
 
     
 
