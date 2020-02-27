@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <input class="form-control todo-input" type="text" placeholder="What do you want to do?" 
-        v-model="newTodo"/>
+        v-model="newTodo" @keyup.enter="addTodo"/>
     <div class="row mt-3 todos-wrapper">
         <div v-for="todo in todos" :key="todo.id" class="todo-item">
             {{ todo.title }}
@@ -18,25 +18,38 @@ export default {
   },
 
   data () {
-      return {
+    return {
         newTodo: '',
+        idForTodo: 4, // Next added element will get id from here
         todos: [
             {
                 'id': 1,
                 'title': 'First task for the day',
                 'completed': false
             },
-             {
+                {
                 'id': 2,
                 'title': 'Second task for the day',
                 'completed': false
             },
-             {
+                {
                 'id': 3,
                 'title': 'Third task for the day',
                 'completed': false
             },
         ]
+    }
+  },
+
+  methods: {
+      addTodo() {
+        this.todos.push({
+            id: this.idForTodo,
+            title: this.newTodo,
+            completed: false,
+        });
+        this.newTodo = '';
+        this.idForTodo++;
       }
   }
 }
