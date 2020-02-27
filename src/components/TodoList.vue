@@ -3,8 +3,16 @@
     <input class="form-control todo-input" type="text" placeholder="What do you want to do?" 
         v-model="newTodo" @keyup.enter="addTodo"/>
     <div class="row mt-3 todos-wrapper">
-        <div v-for="todo in todos" :key="todo.id" class="todo-item">
-            {{ todo.title }}
+        <div v-for="(todo, index) in todos" :key="todo.id" class="todo-item">
+
+            <div class="todo-item-left">
+                <input type="checkbox" v-model="todo.completed">
+                <div class="todo-item-label" v-if="!todo.editing" @dblclick="editTodo(todo)">{{ todo.title }}</div>
+                <input v-else class="form-control todo-item-edit" ref="edit" type="text" v-model="todo.title" 
+                    @blur="submitEdit(todo)" @keyup.enter="submitEdit(todo)" @keyup.esc="cancelEdit(todo)" v-focus/>
+            </div>
+            
+            <div class="remove-item" @click="removeTodo(index)">&times;</div>
         </div>
     </div>
   </div>
@@ -20,37 +28,74 @@ export default {
   data () {
     return {
         newTodo: '',
-        idForTodo: 4, // Next added element will get id from here
+        idForTodo: 4, // Next added element will get id from here,
+        beforeEditCache: '',
         todos: [
             {
                 'id': 1,
                 'title': 'First task for the day',
-                'completed': false
+                'completed': false,
+                'editing': false,
             },
                 {
                 'id': 2,
                 'title': 'Second task for the day',
-                'completed': false
+                'completed': false,
+                'editing': false,
             },
                 {
                 'id': 3,
                 'title': 'Third task for the day',
-                'completed': false
+                'completed': false,
+                'editing': false,
             },
         ]
     }
   },
 
+  directives: {
+    focus: {
+        inserted: function(el) {
+            el.focus();
+        }
+    }
+  },
+
   methods: {
-      addTodo() {
+
+    addTodo() {
+        if (this.newTodo.trim().length == 0) return
         this.todos.push({
             id: this.idForTodo,
             title: this.newTodo,
             completed: false,
+            editing: false,
         });
-        this.newTodo = '';
-        this.idForTodo++;
-      }
+        this.newTodo = ''
+        this.idForTodo++
+    },
+
+    editTodo(todo) {
+        
+        this.beforeEditCache = todo.title
+        todo.editing = true 
+    },
+
+    submitEdit(todo) {
+        if (todo.title.trim() == '') this.beforeEditCache; 
+        todo.editing = false
+
+    },
+
+    cancelEdit(todo) {
+        todo.title = this.beforeEditCache
+        todo.editing = false
+    },
+
+    removeTodo(index) {
+        this.todos.splice(index, 1)
+    }
+
   }
 }
 </script>
@@ -77,7 +122,43 @@ export default {
     text-align: left;
     margin-bottom: 20px;
     padding: 10px 12px;
-    border-bottom: 1px dotted #ccc
+    border-bottom: 1px dotted #ccc;
+    display: flex;
+    justify-content: space-between;
  }
+
+ .remove-item {
+    cursor: pointer;
+    margin-left: 14px;
+    &:hover {
+        color: red;
+        font-weight: bold;
+    }
+ }
+
+ .todo-item-left {
+    display: flex;
+    align-items: center;
+ }
+ .todo-item-label {
+    padding: 10px;
+    border: 1px solid white;
+    margin-left: 12px;
+ }
+
+ .todo-item-edit { 
+    color: #2c3e50;
+    margin-left: 12px;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc; 
+
+    &:focus {
+        outline: none;
+    }
+ }
+
+
 
 </style>
