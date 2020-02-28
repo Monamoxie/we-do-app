@@ -42,6 +42,13 @@ export default {
     },
 
     watch: {
+        /// We need to do something here only if one of the props coming from the parent component changes
+        //  SO we use a watch
+        // Each child component sets it up and waits
+        // The moment the checkbox in the parent composer is clicked.
+        // This child compoent, like all it's siblings will act accordingly
+        // They all will assume or mark themselves as completed
+        // So the wathcer only acts when they receive command from outside
         checkAll() {
             if (this.checkAll) this.completed = true
             else this.completed = this.todo.completed
