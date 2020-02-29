@@ -5,7 +5,7 @@
         <div v-if="todosFiltered.length">
             <transition-group name="fade" enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
                 <TodoItem v-for="(todo, index) in todosFiltered" :key="todo.id" :todo="todo" 
-                    :index="index" :checkAll="!anyRemaining" @removedTodo="removeTodo" @finishedEdit="finishedEdit"> 
+                    :index="index" :checkAll="!anyRemaining"> 
                 </TodoItem>
             </transition-group>
         </div> 
@@ -50,7 +50,9 @@
 </template>
 
 <script>
+
 import TodoItem from './TodoItem'
+import {AppEventBus} from '../main'
 
 export default {
     name: 'TodoList',
@@ -86,6 +88,11 @@ export default {
                 },
             ]
         }
+    },
+
+    created() {
+        AppEventBus.$on('removeTodo', (index) => this.removeTodo(index))
+        AppEventBus.$on('submitEdit', (data) => this.submitEdit(data))
     },
 
     computed: {
@@ -142,7 +149,7 @@ export default {
         },
 
         // The method is called from the child component (Todoitem)
-        finishedEdit(data) {
+        submitEdit(data) {
             // Simply update todos (The single source of truth) with the new data that has just been sent from the child component
             this.todos.splice(data.index, 1, data.todo)
         }

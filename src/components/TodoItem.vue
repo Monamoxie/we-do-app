@@ -12,6 +12,9 @@
 </template>
 
 <script>
+
+import {AppEventBus} from '../main'
+
 export default {
     name: 'TodoItem',
     props: {
@@ -71,7 +74,7 @@ export default {
             //  So instead of localizing each event to a component, I keep these events in it's parent component, 
             // Then when I need to use that event within the child, I simply emit it and it get's set to the parent who handles it from there
 
-            this.$emit('removedTodo', index)
+            AppEventBus.$emit('removeTodo', index)
         },
         
         editTodo() {
@@ -91,7 +94,7 @@ export default {
             // We need to update the super array of objects that exists within the parent component
             // And to do this, we simply emit an event to the parent component to handle that functionality
             
-            this.$emit('finishedEdit', {
+            AppEventBus.$emit('submitEdit', {
                 'index': this.index,
                 'todo': {
                     'id': this.id,
