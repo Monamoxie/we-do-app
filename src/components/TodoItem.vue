@@ -7,7 +7,11 @@
             <input v-else class="form-control todo-item-edit" ref="edit" type="text" v-model="title" 
                 @blur="submitEdit()" @keyup.enter="submitEdit()" @keyup.esc="cancelEdit()" v-focus/>
             </div>
-            <div class="remove-item" @click="removeTodo(index)">&times;</div>
+            <div>
+                <button @click="pluralize">Plural</button>
+                <span class="remove-item" @click="removeTodo(index)">&times;</span>
+            </div>
+            
         </div>
 </template>
 
@@ -42,6 +46,15 @@ export default {
             'editing': this.todo.editing,
             'beforeEditcache': ''
         }
+    },
+
+    created() {
+        // Register the event listener on created
+        AppEventBus.$on('pluralize', this.handlePluralize)
+    },
+
+    beforeDestroy() {
+        AppEventBus.$off('pluralize', this.handlePluralize)
     },
 
     watch: {
@@ -109,6 +122,23 @@ export default {
             this.title = this.beforeEditCache
             this.editing = false
         },
+
+        pluralize() { 
+            AppEventBus.$emit('pluralize') 
+        },
+
+        handlePluralize() {
+            this.title = this.title + 's'
+             AppEventBus.$emit('submitEdit', {
+                'index': this.index,
+                'todo': {
+                    'id': this.id,
+                    'title': this.title,
+                    'completed': this.completed,
+                    'editing': this.editing
+                }
+            })
+        }
     }
 }
 </script>

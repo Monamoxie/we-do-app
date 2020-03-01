@@ -20,7 +20,7 @@
                 <input type="checkbox" :checked="!anyRemaining" @change="checkAllTodos"> Check All
             </label>
         </div>
-        <div> {{ remaining }} items left</div>
+        <todo-items-remaining :remaining="remaining"></todo-items-remaining>
     </div>
 
     <div class="extra-container">
@@ -51,14 +51,17 @@
 
 <script>
 
-import TodoItem from './TodoItem'
 import {AppEventBus} from '../main'
+import TodoItem from './TodoItem'
+import TodoItemsRemaining from './TodoItemsRemaining'
+
 
 export default {
     name: 'TodoList',
 
     components: {
         TodoItem,
+        TodoItemsRemaining,
     },
 
     data () {
