@@ -88,7 +88,14 @@ export default {
         AppEventBus.$on('checkAllChecked', (checkStatus) => this.checkAllTodos(checkStatus))
         AppEventBus.$on('filterChanged', (filter) => this.filter = filter)
         AppEventBus.$on('clearCompletedTodos', () => this.clearCompleted())
+    },
 
+    beforeDestroy() {
+        AppEventBus.$off('removeTodo', (index) => this.removeTodo(index))
+        AppEventBus.$off('submitEdit', (data) => this.submitEdit(data))
+        AppEventBus.$off('checkAllChecked', (checkStatus) => this.checkAllTodos(checkStatus))
+        AppEventBus.$off('filterChanged', (filter) => this.filter = filter)
+        AppEventBus.$off('clearCompletedTodos', () => this.clearCompleted())
     },
 
     computed: {
