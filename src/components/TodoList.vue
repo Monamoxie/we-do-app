@@ -20,18 +20,8 @@
     </div>
 
     <div class="extra-container">
-        <div>
-            <button :class="{ active: filter === 'all' }" @click="filter = 'all'">
-                All
-            </button>
-            <button :class="{ active: filter === 'active' }" @click="filter = 'active'">
-                Active
-            </button>
-            <button :class="{ active: filter === 'completed' }" @click="filter = 'completed'">
-                Completed
-            </button>
-        </div>
-
+        
+        <todo-filtered></todo-filtered>
         <div>
             <transition name="fade">
                 <button v-if="showClearCompletedButton" @click="clearCompleted">
@@ -51,6 +41,7 @@ import {AppEventBus} from '../main'
 import TodoItem from './TodoItem'
 import TodoItemsRemaining from './TodoItemsRemaining'
 import TodoCheckAll from './TodoCheckAll'
+import TodoFiltered from './TodoFiltered'
 
 
 export default {
@@ -60,6 +51,7 @@ export default {
         TodoItem,
         TodoItemsRemaining,
         TodoCheckAll,
+        TodoFiltered,
     },
 
     data () {
@@ -95,7 +87,7 @@ export default {
         AppEventBus.$on('removeTodo', (index) => this.removeTodo(index))
         AppEventBus.$on('submitEdit', (data) => this.submitEdit(data))
         AppEventBus.$on('checkAllChecked', (checkStatus) => this.checkAllTodos(checkStatus))
-
+        AppEventBus.$on('filterChanged', (filter) => this.filter = filter)
     },
 
     computed: {
@@ -109,7 +101,7 @@ export default {
         }, 
 
         todosFiltered() { 
-
+            
             if (this.filter === 'active') return this.todos.filter(todo => !todo.completed) 
             else if (this.filter === 'completed') return this.todos.filter(todo => todo.completed) 
 
