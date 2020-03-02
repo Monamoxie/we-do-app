@@ -24,7 +24,7 @@
         <todo-filtered></todo-filtered>
         <div>
             <transition name="fade">
-                <todo-clear-completed :showClearCompletedButton="showClearCompletedButton"></todo-clear-completed>
+                <todo-clear-completed></todo-clear-completed>
             </transition>
         </div>
     </div>
@@ -112,11 +112,11 @@ export default {
             return this.$store.getters.todosFiltered
         },
         
-        showClearCompletedButton() {
-            // returns a sub array in todos where any of the todo has a completed property set to true. 
-            // count all and show the button if lenght > 0
-            return this.$store.getters.showClearCompletedButton
-        }
+        // showClearCompletedButton() {
+        //     // returns a sub array in todos where any of the todo has a completed property set to true. 
+        //     // count all and show the button if lenght > 0
+        //     return this.$store.getters.showClearCompletedButton
+        // }
     },
 
     methods: {

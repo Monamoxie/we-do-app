@@ -6,20 +6,20 @@
 
 <script>
 
-import { AppEventBus } from '../main';
+// import { AppEventBus } from '../main';
 
 export default {
     name: 'todo-clear-completed',
-    props: {
-        showClearCompletedButton: {
-            type: Boolean,
-            required: true
+    computed: {
+        showClearCompletedButton() {
+            return this.$store.getters.showClearCompletedButton
         }
     },
 
     methods: {
         clearCompleted() {
-            AppEventBus.$emit('clearCompletedTodos')
+            // AppEventBus.$emit('clearCompletedTodos')
+            this.$store.state.todos = this.$store.state.todos.filter(todo => todo.completed === false) 
         }
     }
 }
