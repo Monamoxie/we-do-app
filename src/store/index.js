@@ -84,5 +84,26 @@ export const store = new Vuex.Store({
                 'editing': todo.editing
             })
         }
+    },
+
+    actions: {
+        addTodo(context, todo) {
+            context.commit('addTodo', todo)
+        },
+        clearCompleted(context) {
+            context.commit('clearCompleted')
+        },
+        updateFilter(context, filter) {
+            context.commit('updateFilter', filter)
+        },
+        checkAll(context, checked) {
+            context.commit('checkAll', checked)
+        },
+        deleteTodo(context, id) {
+            context.commit('deleteTodo', id)
+        },
+        updateTodo(context, todo) {
+            context.commit('updateTodo', todo)
+        }
     }
 })

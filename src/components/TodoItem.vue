@@ -88,7 +88,7 @@ export default {
             // Then when I need to use that event within the child, I simply emit it and it get's set to the parent who handles it from there
 
             // AppEventBus.$emit('removeTodo', id)
-            this.$store.commit('deleteTodo', id)
+            this.$store.dispatch('deleteTodo', id)
         },
         
         editTodo() {
@@ -117,7 +117,7 @@ export default {
             //         'editing': this.editing
             //     }
             // })
-            this.$store.commit('updateTodo', {
+            this.$store.dispatch('updateTodo', {
                 'id': this.id,
                 'title': this.title,
                 'completed': this.completed,

@@ -27,7 +27,7 @@ name: 'todo-filtered',
 
     methods: {
         changeFilter(filter) { 
-            this.$store.commit('updateFilter', filter)
+            this.$store.dispatch('updateFilter', filter)
         }
     }
 }
