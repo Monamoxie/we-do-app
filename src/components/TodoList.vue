@@ -34,7 +34,7 @@
 
 <script>
 
-import {AppEventBus} from '../main'
+// import {AppEventBus} from '../main'
 import TodoItem from './TodoItem'
 import TodoItemsRemaining from './TodoItemsRemaining'
 import TodoCheckAll from './TodoCheckAll'
@@ -81,23 +81,7 @@ export default {
             ]
         }
     },
-
-    created() {
-        // AppEventBus.$on('removeTodo', (index) => this.removeTodo(index))
-        // AppEventBus.$on('submitEdit', (data) => this.submitEdit(data))
-        // AppEventBus.$on('checkAllChecked', (checkStatus) => this.checkAllTodos(checkStatus))
-        // AppEventBus.$on('filterChanged', (filter) => this.$store.state.filter = filter)
-        AppEventBus.$on('clearCompletedTodos', () => this.clearCompleted())
-    },
-
-    beforeDestroy() {
-        // AppEventBus.$off('removeTodo', (index) => this.removeTodo(index))
-        // AppEventBus.$off('submitEdit', (data) => this.submitEdit(data))
-        // AppEventBus.$off('checkAllChecked', (checkStatus) => this.checkAllTodos(checkStatus))
-        // AppEventBus.$off('filterChanged', (filter) => this.$store.state.filter = filter)
-        AppEventBus.$off('clearCompletedTodos', () => this.clearCompleted())
-    },
-
+ 
     computed: {
 
         remaining() {
@@ -122,12 +106,13 @@ export default {
     methods: {
         addTodo() {
             if (this.newTodo.trim().length == 0) return
-            this.$store.state.todos.push({
+            this.$store.commit('addTodo', {
                 id: this.idForTodo,
                 title: this.newTodo,
                 completed: false,
                 editing: false,
-            });
+            })
+            
             this.newTodo = ''
             this.idForTodo++
         },
