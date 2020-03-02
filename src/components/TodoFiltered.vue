@@ -14,21 +14,21 @@
 
 <script>
 
-import { AppEventBus } from '../main';
+// import { AppEventBus } from '../main';
 
 export default {
-    name: 'todo-filtered',
+name: 'todo-filtered',
    
-   data() {
-        return {
-            filter: 'all',
+   computed: {
+        filter() {
+            return this.$store.state.filter
         }
     },
 
     methods: {
-        changeFilter(filter) {
-            this.filter = filter
-            AppEventBus.$emit('filterChanged', this.filter)
+        changeFilter(filter) { 
+            this.$store.state.filter = filter
+            // AppEventBus.$emit('filterChanged', this.filter)
         }
     }
 }
