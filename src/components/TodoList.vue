@@ -86,7 +86,7 @@ export default {
         AppEventBus.$on('removeTodo', (index) => this.removeTodo(index))
         AppEventBus.$on('submitEdit', (data) => this.submitEdit(data))
         AppEventBus.$on('checkAllChecked', (checkStatus) => this.checkAllTodos(checkStatus))
-        AppEventBus.$on('filterChanged', (filter) => this.filter = filter)
+        AppEventBus.$on('filterChanged', (filter) => this.$store.state.filter = filter)
         AppEventBus.$on('clearCompletedTodos', () => this.clearCompleted())
     },
 
@@ -94,14 +94,14 @@ export default {
         AppEventBus.$off('removeTodo', (index) => this.removeTodo(index))
         AppEventBus.$off('submitEdit', (data) => this.submitEdit(data))
         AppEventBus.$off('checkAllChecked', (checkStatus) => this.checkAllTodos(checkStatus))
-        AppEventBus.$off('filterChanged', (filter) => this.filter = filter)
+        AppEventBus.$off('filterChanged', (filter) => this.$store.state.filter = filter)
         AppEventBus.$off('clearCompletedTodos', () => this.clearCompleted())
     },
 
     computed: {
 
         remaining() {
-            return this.todos.filter(todo => !todo.completed).length
+            return this.$store.state.todos.filter(todo => !todo.completed).length
         },
 
         anyRemaining() {
@@ -110,23 +110,23 @@ export default {
 
         todosFiltered() { 
             
-            if (this.filter === 'active') return this.todos.filter(todo => !todo.completed) 
-            else if (this.filter === 'completed') return this.todos.filter(todo => todo.completed) 
+            if (this.$store.state.filter === 'active') return this.$store.state.todos.filter(todo => !todo.completed) 
+            else if (this.$store.state.filter === 'completed') return this.$store.state.todos.filter(todo => todo.completed) 
 
-            return this.todos 
+            return this.$store.state.todos 
         },
         
         showClearCompletedButton() {
             // returns a sub array in todos where any of the todo has a completed property set to true. 
             // count all and show the button if lenght > 0
-            return this.todos.filter(todo => todo.completed).length > 0
+            return this.$store.state.todos.filter(todo => todo.completed).length > 0
         }
     },
 
     methods: {
         addTodo() {
             if (this.newTodo.trim().length == 0) return
-            this.todos.push({
+            this.$store.state.todos.push({
                 id: this.idForTodo,
                 title: this.newTodo,
                 completed: false,
@@ -140,21 +140,21 @@ export default {
 
         // The method is called from the child component (Todoitem)
         removeTodo(index) {
-            this.todos.splice(index, 1)
+            this.$store.state.todos.splice(index, 1)
         },
 
         checkAllTodos() {
-            this.todos.forEach((todo) => todo.completed = event.target.checked)
+            this.$store.state.todos.forEach((todo) => todo.completed = event.target.checked)
         },
 
         clearCompleted() {
-            this.todos = this.todos.filter(todo => todo.completed === false) // another way of using the filter method
+            this.$store.state.todos = this.$store.state.todos.filter(todo => todo.completed === false) // another way of using the filter method
         },
 
         // The method is called from the child component (Todoitem)
         submitEdit(data) {
             // Simply update todos (The single source of truth) with the new data that has just been sent from the child component
-            this.todos.splice(data.index, 1, data.todo)
+            this.$store.state.todos.splice(data.index, 1, data.todo)
         }
 
     }
