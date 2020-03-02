@@ -15,7 +15,7 @@
     </div>
 
     <div class="extra-container">
-        <todo-check-all :anyRemaining="anyRemaining"></todo-check-all>
+        <todo-check-all></todo-check-all>
         <todo-items-remaining></todo-items-remaining>
     </div>
 
@@ -84,7 +84,7 @@ export default {
 
     created() {
         // AppEventBus.$on('removeTodo', (index) => this.removeTodo(index))
-        AppEventBus.$on('submitEdit', (data) => this.submitEdit(data))
+        // AppEventBus.$on('submitEdit', (data) => this.submitEdit(data))
         AppEventBus.$on('checkAllChecked', (checkStatus) => this.checkAllTodos(checkStatus))
         AppEventBus.$on('filterChanged', (filter) => this.$store.state.filter = filter)
         AppEventBus.$on('clearCompletedTodos', () => this.clearCompleted())
@@ -92,7 +92,7 @@ export default {
 
     beforeDestroy() {
         // AppEventBus.$off('removeTodo', (index) => this.removeTodo(index))
-        AppEventBus.$off('submitEdit', (data) => this.submitEdit(data))
+        // AppEventBus.$off('submitEdit', (data) => this.submitEdit(data))
         AppEventBus.$off('checkAllChecked', (checkStatus) => this.checkAllTodos(checkStatus))
         AppEventBus.$off('filterChanged', (filter) => this.$store.state.filter = filter)
         AppEventBus.$off('clearCompletedTodos', () => this.clearCompleted())
