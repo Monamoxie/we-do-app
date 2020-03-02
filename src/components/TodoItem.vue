@@ -88,8 +88,7 @@ export default {
             // Then when I need to use that event within the child, I simply emit it and it get's set to the parent who handles it from there
 
             // AppEventBus.$emit('removeTodo', id)
-            const index = this.$store.state.todos.findIndex(item => item.id == id)
-            this.$store.state.todos.splice(index, 1)
+            this.$store.commit('deleteTodo', id)
         },
         
         editTodo() {
