@@ -101,25 +101,21 @@ export default {
     computed: {
 
         remaining() {
-            return this.$store.state.todos.filter(todo => !todo.completed).length
+            return this.$store.getters.remaining 
         },
 
         anyRemaining() {
-            return this.remaining != 0
+            return this.$store.getters.anyRemaining
         }, 
 
         todosFiltered() { 
-            
-            if (this.$store.state.filter === 'active') return this.$store.state.todos.filter(todo => !todo.completed) 
-            else if (this.$store.state.filter === 'completed') return this.$store.state.todos.filter(todo => todo.completed) 
-
-            return this.$store.state.todos 
+            return this.$store.getters.todosFiltered
         },
         
         showClearCompletedButton() {
             // returns a sub array in todos where any of the todo has a completed property set to true. 
             // count all and show the button if lenght > 0
-            return this.$store.state.todos.filter(todo => todo.completed).length > 0
+            return this.$store.getters.showClearCompletedButton
         }
     },
 
