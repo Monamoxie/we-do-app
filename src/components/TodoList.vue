@@ -154,7 +154,9 @@ export default {
         // The method is called from the child component (Todoitem)
         submitEdit(data) {
             // Simply update todos (The single source of truth) with the new data that has just been sent from the child component
-            this.$store.state.todos.splice(data.index, 1, data.todo)
+            // use the id to find the index
+            const index = this.$store.state.todos.findIndex(item => item.id == data.todo.id)
+            this.$store.state.todos.splice(index, 1, data.todo)
         }
 
     }
