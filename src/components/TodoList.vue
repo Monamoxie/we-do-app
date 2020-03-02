@@ -135,7 +135,8 @@ export default {
        
 
         // The method is called from the child component (Todoitem)
-        removeTodo(index) {
+        removeTodo(id) {
+            const index = this.$store.state.todos.findIndex(item => item.id == id)
             this.$store.state.todos.splice(index, 1)
         },
 

@@ -9,7 +9,7 @@
             </div>
             <div>
                 <button @click="pluralize">Plural</button>
-                <span class="remove-item" @click="removeTodo(index)">&times;</span>
+                <span class="remove-item" @click="removeTodo(id)">&times;</span>
             </div>
             
         </div>
@@ -81,13 +81,13 @@ export default {
 
     methods: {
         
-        removeTodo(index) { 
+        removeTodo(id) { 
 
             // Very necessary when you have a case where a set of child components need to fire up an event that is within their parent component
             //  So instead of localizing each event to a component, I keep these events in it's parent component, 
             // Then when I need to use that event within the child, I simply emit it and it get's set to the parent who handles it from there
 
-            AppEventBus.$emit('removeTodo', index)
+            AppEventBus.$emit('removeTodo', id)
         },
         
         editTodo() {
