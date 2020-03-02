@@ -87,7 +87,9 @@ export default {
             //  So instead of localizing each event to a component, I keep these events in it's parent component, 
             // Then when I need to use that event within the child, I simply emit it and it get's set to the parent who handles it from there
 
-            AppEventBus.$emit('removeTodo', id)
+            // AppEventBus.$emit('removeTodo', id)
+            const index = this.$store.state.todos.findIndex(item => item.id == id)
+            this.$store.state.todos.splice(index, 1)
         },
         
         editTodo() {
@@ -107,14 +109,22 @@ export default {
             // We need to update the super array of objects that exists within the parent component
             // And to do this, we simply emit an event to the parent component to handle that functionality
             
-            AppEventBus.$emit('submitEdit', {
-                'index': this.index,
-                'todo': {
-                    'id': this.id,
-                    'title': this.title,
-                    'completed': this.completed,
-                    'editing': this.editing
-                }
+            // AppEventBus.$emit('submitEdit', {
+            //     'index': this.index,
+            //     'todo': {
+            //         'id': this.id,
+            //         'title': this.title,
+            //         'completed': this.completed,
+            //         'editing': this.editing
+            //     }
+            // })
+
+            const index = this.$store.state.todos.findIndex(item => item.id == this.id)
+            this.$store.state.todos.splice(index, 1, {
+                'id': this.id,
+                'title': this.title,
+                'completed': this.completed,
+                'editing': this.editing
             })
         },
 
@@ -129,14 +139,22 @@ export default {
 
         handlePluralize() {
             this.title = this.title + 's'
-             AppEventBus.$emit('submitEdit', {
-                'index': this.index,
-                'todo': {
-                    'id': this.id,
-                    'title': this.title,
-                    'completed': this.completed,
-                    'editing': this.editing
-                }
+            //  AppEventBus.$emit('submitEdit', {
+            //     'index': this.index,
+            //     'todo': {
+            //         'id': this.id,
+            //         'title': this.title,
+            //         'completed': this.completed,
+            //         'editing': this.editing
+            //     }
+            // })
+
+            const index = this.$store.state.todos.findIndex(item => item.id == this.id)
+            this.$store.state.todos.splice(index, 1, {
+                'id': this.id,
+                'title': this.title,
+                'completed': this.completed,
+                'editing': this.editing
             })
         }
     }

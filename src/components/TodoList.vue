@@ -83,7 +83,7 @@ export default {
     },
 
     created() {
-        AppEventBus.$on('removeTodo', (index) => this.removeTodo(index))
+        // AppEventBus.$on('removeTodo', (index) => this.removeTodo(index))
         AppEventBus.$on('submitEdit', (data) => this.submitEdit(data))
         AppEventBus.$on('checkAllChecked', (checkStatus) => this.checkAllTodos(checkStatus))
         AppEventBus.$on('filterChanged', (filter) => this.$store.state.filter = filter)
@@ -91,7 +91,7 @@ export default {
     },
 
     beforeDestroy() {
-        AppEventBus.$off('removeTodo', (index) => this.removeTodo(index))
+        // AppEventBus.$off('removeTodo', (index) => this.removeTodo(index))
         AppEventBus.$off('submitEdit', (data) => this.submitEdit(data))
         AppEventBus.$off('checkAllChecked', (checkStatus) => this.checkAllTodos(checkStatus))
         AppEventBus.$off('filterChanged', (filter) => this.$store.state.filter = filter)
@@ -135,10 +135,10 @@ export default {
        
 
         // The method is called from the child component (Todoitem)
-        removeTodo(id) {
-            const index = this.$store.state.todos.findIndex(item => item.id == id)
-            this.$store.state.todos.splice(index, 1)
-        },
+        // removeTodo(id) {
+        //     const index = this.$store.state.todos.findIndex(item => item.id == id)
+        //     this.$store.state.todos.splice(index, 1)
+        // },
 
         checkAllTodos() {
             this.$store.state.todos.forEach((todo) => todo.completed = event.target.checked)
