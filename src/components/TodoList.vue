@@ -16,7 +16,7 @@
 
     <div class="extra-container">
         <todo-check-all :anyRemaining="anyRemaining"></todo-check-all>
-        <todo-items-remaining :remaining="remaining"></todo-items-remaining>
+        <todo-items-remaining></todo-items-remaining>
     </div>
 
     <div class="extra-container">
