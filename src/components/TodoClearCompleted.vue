@@ -17,9 +17,8 @@ export default {
     },
 
     methods: {
-        clearCompleted() {
-            // AppEventBus.$emit('clearCompletedTodos')
-            this.$store.state.todos = this.$store.state.todos.filter(todo => todo.completed === false) 
+        clearCompleted() { 
+            this.$store.commit('clearCompleted')
         }
     }
 }

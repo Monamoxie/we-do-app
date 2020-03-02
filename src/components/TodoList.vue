@@ -94,13 +94,7 @@ export default {
 
         todosFiltered() { 
             return this.$store.getters.todosFiltered
-        },
-        
-        // showClearCompletedButton() {
-        //     // returns a sub array in todos where any of the todo has a completed property set to true. 
-        //     // count all and show the button if lenght > 0
-        //     return this.$store.getters.showClearCompletedButton
-        // }
+        }, 
     },
 
     methods: {
@@ -116,31 +110,7 @@ export default {
             this.newTodo = ''
             this.idForTodo++
         },
-
-       
-
-        // The method is called from the child component (Todoitem)
-        // removeTodo(id) {
-        //     const index = this.$store.state.todos.findIndex(item => item.id == id)
-        //     this.$store.state.todos.splice(index, 1)
-        // },
-
-        checkAllTodos() {
-            this.$store.state.todos.forEach((todo) => todo.completed = event.target.checked)
-        },
-
-        clearCompleted() {
-            this.$store.state.todos = this.$store.state.todos.filter(todo => todo.completed === false) // another way of using the filter method
-        },
-
-        // The method is called from the child component (Todoitem)
-        submitEdit(data) {
-            // Simply update todos (The single source of truth) with the new data that has just been sent from the child component
-            // use the id to find the index
-            const index = this.$store.state.todos.findIndex(item => item.id == data.todo.id)
-            this.$store.state.todos.splice(index, 1, data.todo)
-        }
-
+  
     }
 }
 </script>
