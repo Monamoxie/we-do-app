@@ -56,38 +56,11 @@ export default {
     data () {
         return {
             newTodo: '',
-            idForTodo: 4, // Next added element will get id from here,
-            beforeEditCache: '',
-            filter: 'all',
-            todos: [
-                {
-                    'id': 1,
-                    'title': 'First task for the day',
-                    'completed': false,
-                    'editing': false,
-                },
-                    {
-                    'id': 2,
-                    'title': 'Second task for the day',
-                    'completed': false,
-                    'editing': false,
-                },
-                    {
-                    'id': 3,
-                    'title': 'Third task for the day',
-                    'completed': false,
-                    'editing': false,
-                },
-            ]
+            idForTodo: 4, // Next added element will get id from here, 
         }
     },
  
     computed: {
-
-        remaining() {
-            return this.$store.getters.remaining 
-        },
-
         anyRemaining() {
             return this.$store.getters.anyRemaining
         }, 
