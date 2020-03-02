@@ -27,8 +27,7 @@ name: 'todo-filtered',
 
     methods: {
         changeFilter(filter) { 
-            this.$store.state.filter = filter
-            // AppEventBus.$emit('filterChanged', this.filter)
+            this.$store.commit('updateFilter', filter)
         }
     }
 }
