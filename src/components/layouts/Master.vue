@@ -3,8 +3,8 @@
         <ul class="nav">
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
-            <li><a href="/login"></a>Login</li>
-            <li><a href="/register"></a>Register</li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
         </ul>
         <div>
             Page content goese here
@@ -41,17 +41,19 @@ export default {
 .nav {
     display: flex;
     list-style: none;
-    padding: 15px 0;
-    margin: 0;
+    padding: 15px 0px;
+    padding-right: 50px;
+    margin: 0 15px 0 0;
     justify-content:flex-end;
     background: #f4f8fa;
     border-bottom: 1px solid lightgrey;
-    margin-bottom: 24px;
+    margin-bottom: 24px; 
+    width: 100%;
 }
 
 .nav a  {
     color: #626b6f;
-    padding: 0 25px;
+    padding: 0 15px;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: .1em;
