@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/todos', 'TodosController@index');
 Route::post('/todos', 'TodosController@store');
 Route::patch('/todos/{todo}', 'TodosController@update');
+Route::patch('/todos/check/all', 'TodosController@updateAll');
 Route::delete('/todos/{todo}', 'TodosController@destroy');
+Route::delete('/todos/delete_completed', 'TodosController@destroyCompleted');
+
 
 

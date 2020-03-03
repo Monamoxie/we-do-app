@@ -80,4 +80,39 @@ class TodosController extends Controller
 
         return response('Deleted todo successfully', 200);
     }
+
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request 
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAll(Request $request)
+    {
+        $data = $request->validate([ 
+            'completed' => ['required', 'boolean'],
+        ]);
+
+        Todo::query()->update($data);
+        
+        return response('Update successful', 200);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \Illuminate\Http\Request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyAll(Request $request)
+    {
+        return 'ddd';
+        $request->validate([
+            'todos' => ['required', 'array']
+        ]);
+        Todo::destroy($request->todos);
+        return response('Deleted', 200);
+    }
 }
