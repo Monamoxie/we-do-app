@@ -1,7 +1,11 @@
 <template>
   <div class="hello">
     <input class="form-control todo-input" type="text" placeholder="What do you want to do?" v-model="newTodo" @keyup.enter="addTodo"/>
-    <div class="mt-3 todos-wrapper">
+    
+    <div class="lds-ring" v-if="$store.state.loading"><div></div><div></div><div></div><div></div></div>
+
+
+    <div class="mt-3 todos-wrapper" v-else>
         <div v-if="todosFiltered.length">
             <transition-group name="fade" enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
                 <TodoItem v-for="(todo, index) in todosFiltered" :key="todo.id" :todo="todo" 
@@ -196,7 +200,44 @@ export default {
         color: #fff;
     }
 
-    
+
+
+
+    .lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  margin: 8px;
+  border: 8px solid rgb(4, 209, 4);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: rgb(4, 209, 4) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
     
 

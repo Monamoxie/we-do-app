@@ -9,6 +9,7 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state: {
         filter: 'all',
+        loading: true,
         todos: [
             // {
             //     'id': 1,
@@ -94,8 +95,10 @@ export const store = new Vuex.Store({
 
     actions: {
         retrieveTodos(context) {
+            context.state.loading = true
             axios.get('/todos')
             .then(response => {
+                context.state.loading = false
                 context.commit('retrieveTodos', response.data)
             })
             .catch(errors => {
