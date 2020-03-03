@@ -106,9 +106,8 @@ class TodosController extends Controller
      * @param  \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
-    public function destroyAll(Request $request)
-    {
-        return 'ddd';
+    public function destroyCompleted(Request $request)
+    { 
         $request->validate([
             'todos' => ['required', 'array']
         ]);

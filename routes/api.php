@@ -22,7 +22,7 @@ Route::post('/todos', 'TodosController@store');
 Route::patch('/todos/{todo}', 'TodosController@update');
 Route::patch('/todos/check/all', 'TodosController@updateAll');
 Route::delete('/todos/{todo}', 'TodosController@destroy');
-Route::delete('/todos/delete_completed', 'TodosController@destroyCompleted');
+Route::delete('/todos/delete/completed', 'TodosController@destroyCompleted');
 
 
 

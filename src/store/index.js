@@ -66,7 +66,7 @@ export const store = new Vuex.Store({
             })
         },
         clearCompleted(state) {
-            state.todos = state.todos.filter(todo => todo.completed === false) 
+            state.todos = state.todos.filter(todo => todo.completed == false) 
         },
         updateFilter(state, filter) {
             state.filter = filter 
@@ -94,7 +94,6 @@ export const store = new Vuex.Store({
 
     actions: {
         retrieveTodos(context) {
-            
             axios.get('/todos')
             .then(response => {
                 context.commit('retrieveTodos', response.data)
@@ -118,7 +117,23 @@ export const store = new Vuex.Store({
         },
 
         clearCompleted(context) {
-            context.commit('clearCompleted')
+            
+            // How to use filter and mpa to return the id of the completed
+            const completed = store.state.todos
+            .filter(todo => todo.completed == true)
+            .map(todo => todo.id)
+             
+            axios.delete('/todos/delete/completed', {
+                data: {
+                    todos: completed
+                }
+            })
+            .then(() => {
+                context.commit('clearCompleted')
+            })
+            .catch(errors => {
+                console.log(errors)
+            })
         },
 
         updateFilter(context, filter) {
