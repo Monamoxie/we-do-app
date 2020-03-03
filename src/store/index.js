@@ -115,7 +115,6 @@ export const store = new Vuex.Store({
                 console.log(errors)
             })
         },
-
         clearCompleted(context) {
             
             // How to use filter and mpa to return the id of the completed
@@ -135,11 +134,9 @@ export const store = new Vuex.Store({
                 console.log(errors)
             })
         },
-
         updateFilter(context, filter) {
             context.commit('updateFilter', filter)
         },
-
         checkAll(context, checked) {
             axios.patch('/todos/check/all', {
                 completed: checked
