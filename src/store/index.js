@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://192.168.0.100:8080/api';
+axios.defaults.baseURL = 'https://192.168.0.100:8080/';
 
 Vue.use(Vuex)
 
