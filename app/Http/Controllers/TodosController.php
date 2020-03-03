@@ -76,6 +76,8 @@ class TodosController extends Controller
      */
     public function destroy(Todo $todo)
     {
-        //
+        $todo->delete();
+
+        return response('Deleted todo successfully', 200);
     }
 }
