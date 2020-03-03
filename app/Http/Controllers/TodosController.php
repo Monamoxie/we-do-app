@@ -63,8 +63,8 @@ class TodosController extends Controller
             'completed' => ['required', 'boolean'],
         ]);
 
-        $todo = $todo->update($data);
-
+        $todo->update($data);
+        
         return response($todo, 200);
     }
 

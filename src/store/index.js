@@ -94,6 +94,7 @@ export const store = new Vuex.Store({
 
     actions: {
         retrieveTodos(context) {
+            
             axios.get('/todos')
             .then(response => {
                 context.commit('retrieveTodos', response.data)
@@ -103,9 +104,17 @@ export const store = new Vuex.Store({
             })
         },
         addTodo(context, todo) {
-            setTimeout(() => {
-                context.commit('addTodo', todo)
-            }, 2000)
+
+            axios.post('/todos', {
+                title: todo.title,
+                completed: todo.completed
+            })
+            .then(response => {
+                context.commit('addTodo', response.data)
+            })
+            .catch(errors => {
+                console.log(errors)
+            })
         },
         clearCompleted(context) {
             setTimeout(() => {
@@ -128,9 +137,16 @@ export const store = new Vuex.Store({
             }, 1000)
         },
         updateTodo(context, todo) {
-            setTimeout(() => {
-                context.commit('updateTodo', todo)
-            }, 2300)
+            axios.patch('/todos/' + todo.id, {
+                title: todo.title,
+                completed: todo.completed
+            })
+            .then(response => {
+                context.commit('updateTodo', response.data)
+            })
+            .catch(errors => {
+                console.log(errors)
+            })
         }
     }
 })

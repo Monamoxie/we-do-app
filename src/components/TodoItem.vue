@@ -3,16 +3,17 @@
         <div class="todo-item-left">
             <input type="checkbox" v-model="completed" @change="submitEdit">
             <div class="todo-item-label" v-if="!editing" @dblclick="editTodo" 
-                :class="{ completed: completed }">{{ title }}</div>
+                :class="{ completed: completed }">{{ title }}
+            </div>
             <input v-else class="form-control todo-item-edit" ref="edit" type="text" v-model="title" 
                 @blur="submitEdit()" @keyup.enter="submitEdit()" @keyup.esc="cancelEdit()" v-focus/>
-            </div>
-            <div>
-                <button @click="pluralize">Plural</button>
-                <span class="remove-item" @click="removeTodo(id)">&times;</span>
-            </div>
-            
         </div>
+        <div>
+            <button @click="pluralize">Plural</button>
+            <span class="remove-item" @click="removeTodo(id)">&times;</span>
+        </div>
+    </div>
+    
 </template>
 
 <script>
