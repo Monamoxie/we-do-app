@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://192.168.0.100:8080/';
+axios.defaults.baseURL = 'http://127.0.0.1:9090/api';
 
 Vue.use(Vuex)
 
@@ -10,24 +10,24 @@ export const store = new Vuex.Store({
     state: {
         filter: 'all',
         todos: [
-            {
-                'id': 1,
-                'title': 'First task for the day',
-                'completed': false,
-                'editing': false,
-            },
-                {
-                'id': 2,
-                'title': 'Second task for the day',
-                'completed': false,
-                'editing': false,
-            },
-                {
-                'id': 3,
-                'title': 'Third task for the day',
-                'completed': false,
-                'editing': false,
-            },
+            // {
+            //     'id': 1,
+            //     'title': 'First task for the day',
+            //     'completed': false,
+            //     'editing': false,
+            // },
+            //     {
+            //     'id': 2,
+            //     'title': 'Second task for the day',
+            //     'completed': false,
+            //     'editing': false,
+            // },
+            //     {
+            //     'id': 3,
+            //     'title': 'Third task for the day',
+            //     'completed': false,
+            //     'editing': false,
+            // },
         ]
     },
 
@@ -86,10 +86,22 @@ export const store = new Vuex.Store({
                 'completed': todo.completed,
                 'editing': todo.editing
             })
+        },
+        retrieveTodos(state, todos) {
+            state.todos = todos 
         }
     },
 
     actions: {
+        retrieveTodos(context) {
+            axios.get('/todos')
+            .then(response => {
+                context.commit('retrieveTodos', response.data)
+            })
+            .catch(errors => {
+                console.log(errors)
+            })
+        },
         addTodo(context, todo) {
             setTimeout(() => {
                 context.commit('addTodo', todo)

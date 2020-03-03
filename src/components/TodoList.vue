@@ -59,6 +59,10 @@ export default {
             idForTodo: 4, // Next added element will get id from here, 
         }
     },
+
+    created() {
+        this.$store.dispatch('retrieveTodos')
+    },
  
     computed: {
         anyRemaining() {
