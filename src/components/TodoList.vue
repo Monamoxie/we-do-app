@@ -2,10 +2,7 @@
   <div class="hello">
     <input class="form-control todo-input" type="text" placeholder="What do you want to do?" v-model="newTodo" @keyup.enter="addTodo"/>
     
-    <div class="lds-ring" v-if="$store.state.loading"><div></div><div></div><div></div><div></div></div>
-
-
-    <div class="mt-3 todos-wrapper" v-else>
+    <div class="mt-3 todos-wrapper" v-if="$store.state.todosLoading === false">
         <div v-if="todosFiltered.length">
             <transition-group name="fade" enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
                 <TodoItem v-for="(todo, index) in todosFiltered" :key="todo.id" :todo="todo" 
@@ -17,6 +14,8 @@
             No record found
         </div>
     </div>
+    
+    <div class="lds-ring" v-if="$store.state.todosLoading === true || $store.state.newTodoLoading"><div></div><div></div><div></div><div></div></div>
 
     <div class="extra-container">
         <todo-check-all></todo-check-all>
