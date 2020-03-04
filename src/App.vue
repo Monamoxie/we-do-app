@@ -1,7 +1,6 @@
 <template>
   <div id="app" class="container">
-    <img alt="Vue logo" src="./assets/logo.png" class="logo">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <img alt="Vue logo" src="./assets/logo.png" class="logo"> 
     <TodoList></TodoList>
   </div>
 </template>
@@ -13,9 +12,9 @@ import TodoList from './components/TodoList.vue'
 
 export default {
   name: 'App',
+
   //Register components here
-  components: {
-    // HelloWorld,
+  components: { 
     TodoList
   }
 }

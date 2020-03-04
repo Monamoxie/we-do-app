@@ -6,15 +6,14 @@
             <li><a href="/login">Login</a></li>
             <li><a href="/register">Register</a></li>
         </ul>
-        <div>
-            Page content goese here
-        </div>
+        
+       <router-view></router-view>   
     </div>
 </template>
 
 <script>
 export default {
-    
+    name: 'Master',
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
     <div>
-        Landing page
+        Landing page ks here
     </div>
 </template>
