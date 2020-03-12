@@ -1,10 +1,11 @@
 <template>
     <div id="app">
         <ul class="nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
+            <li><router-link to="/">Home</router-link></li>
+            <li><router-link to="/todo">Todo</router-link></li>
+            <li><router-link to="/about">About</router-link></li>
+            <li><router-link to="/login">Login</router-link></li>
+            <li><router-link to="/register">Register</router-link></li>
         </ul>
         
        <router-view></router-view>   
