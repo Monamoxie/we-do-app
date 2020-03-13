@@ -24,7 +24,7 @@ class AuthController extends Controller
         else {  
             $user = User::where('email', $request->email)->first();
             $user->token = $user->createToken('user')->accessToken;
-            return response()->json($user, 402);    
+            return response()->json($user, 200);    
         }
 
         $http =  new Client;

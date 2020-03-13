@@ -8,29 +8,11 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
+        token: null,
         filter: 'all',
         todosLoading: true,
         newTodoLoading: false,
-        todos: [
-            // {
-            //     'id': 1,
-            //     'title': 'First task for the day',
-            //     'completed': false,
-            //     'editing': false,
-            // },
-            //     {
-            //     'id': 2,
-            //     'title': 'Second task for the day',
-            //     'completed': false,
-            //     'editing': false,
-            // },
-            //     {
-            //     'id': 3,
-            //     'title': 'Third task for the day',
-            //     'completed': false,
-            //     'editing': false,
-            // },
-        ]
+        todos: []
     },
 
     getters: {
@@ -91,10 +73,27 @@ export const store = new Vuex.Store({
         },
         retrieveTodos(state, todos) {
             state.todos = todos 
+        },
+        retrieveToken(state, token) {
+            state.token = token
         }
     },
 
     actions: {
+        retrieveToken(context, credentials) {
+            axios.post('/login', {
+                email: credentials.email,
+                password: credentials.password
+            })
+            .then(response => { 
+                const token = response.data.token
+                localStorage.setItem('access_token', token) 
+                context.commit('retrieveToken', token)
+            })
+            .catch(errors => {
+                console.log(errors)
+            })
+        },
         retrieveTodos(context) {
             context.state.todosLoading = true
             axios.get('/todos')

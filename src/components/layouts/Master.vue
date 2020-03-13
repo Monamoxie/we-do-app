@@ -60,4 +60,18 @@ export default {
     text-decoration: none;
     text-transform: uppercase;
 }
+
+form label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.centered-form {
+    margin-top: 40px;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 40px 35px 90px;
+    width: 600px;
+    max-width: 99%;
+}
 </style>
