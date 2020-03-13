@@ -30,10 +30,13 @@ export default {
         }
     },
     methods: {
-        login() { 
+        login() {  
             this.$store.dispatch('retrieveToken', {
                 email: this.email,
                 password: this.password
+            })
+            .then(() => {
+                this.$router.push({ name: 'todo' })
             })
         }
     }

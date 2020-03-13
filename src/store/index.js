@@ -8,7 +8,7 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        token: null,
+        token: localStorage.getItem('access_token') || null,
         filter: 'all',
         todosLoading: true,
         newTodoLoading: false,
@@ -16,6 +16,9 @@ export const store = new Vuex.Store({
     },
 
     getters: {
+        loggedIn(state) {
+            return state.token !== null
+        },
         remaining(state) {
             return state.todos.filter(todo => !todo.completed).length
         },
@@ -76,23 +79,48 @@ export const store = new Vuex.Store({
         },
         retrieveToken(state, token) {
             state.token = token
+        },
+        destroyToken(state) {
+            state.token = null
         }
     },
 
     actions: {
         retrieveToken(context, credentials) {
-            axios.post('/login', {
-                email: credentials.email,
-                password: credentials.password
+            return new Promise((resolve, reject) => {
+                axios.post('/login', {
+                    email: credentials.email,
+                    password: credentials.password
+                })
+                .then(response => { 
+                    const token = response.data.token
+                    localStorage.setItem('access_token', token) 
+                    context.commit('retrieveToken', token)
+                    resolve(response)
+                })
+                .catch(errors => {
+                    console.log(errors)
+                    reject(errors)
+                })
             })
-            .then(response => { 
-                const token = response.data.token
-                localStorage.setItem('access_token', token) 
-                context.commit('retrieveToken', token)
-            })
-            .catch(errors => {
-                console.log(errors)
-            })
+        },
+        destroyToken(context) { 
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
+
+            if (context.getters.loggedIn) {
+                return new Promise((resolve, reject) => {
+                    axios.post('/logout')
+                    .then(response => {  
+                        localStorage.removeItem('access_token') 
+                        context.commit('destroyToken')
+                        resolve(response)
+                    })
+                    .catch(errors => {
+                        context.commit('destroyToken')
+                        reject(errors)
+                    })
+                })
+            }
         },
         retrieveTodos(context) {
             context.state.todosLoading = true
