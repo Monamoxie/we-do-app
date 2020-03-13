@@ -15,6 +15,32 @@ const router = new VueRouter({
   mode: 'history'
 })
 
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) { 
+    if (!store.getters.loggedIn) {
+      next({
+        name: 'login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  }
+  else if (to.matched.some(record => record.meta.requiresVisitor)) { 
+    if (store.getters.loggedIn) {
+      next({
+        name: 'todo'
+      })
+    } else {
+      next()
+    }
+  }
+  else {
+    next() // make sure to always call next()!
+  }
+})
+
 new Vue({
   render: h => h(Master),
   router,
