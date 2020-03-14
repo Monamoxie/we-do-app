@@ -2,6 +2,12 @@
     <div  class="flex-center">
         <form class="centered-form" action="#" @submit.prevent="validateBeforeSubmit">
             <h3>LOGIN</h3>
+
+             <div v-if="successMessage" class="alert alert-success flex-center success-container">
+                <p>{{ successMessage }}</p>
+            </div>
+
+
             <div v-if="serverError[0].status" class="alert alert-danger error-container">
                 <h5 class="alert-heading text-center">{{ serverError[0].title  }}</h5> <hr>
                 <div v-if="serverError[0].errors.length > 0">
@@ -36,7 +42,11 @@
 
 export default {
     name: "login",
-
+    props: {
+        dataSuccessMessage: {
+            type: String
+        }
+    },
     data() {
         return {
             email: '',
@@ -46,6 +56,7 @@ export default {
                 'title': '',
                 'errors': ''
             }],
+            successMessage: this.dataSuccessMessage
         }
     },  
     methods: {
@@ -65,11 +76,13 @@ export default {
             .then(() => {
                 this.$router.push({ name: 'todo' })
             })
-            .catch((error) => {
-                this.password = ''
-                this.serverError[0].status = true 
-                this.serverError[0].title = error.response.data.message
-                this.serverError[0].errors = Object.values(error.response.data.errors)
+            .catch((error) => { 
+                this.serverError[0].status = true         
+                const errorObj = error.response.data
+                this.serverError[0].title = errorObj.hasOwnProperty('message') ? error.response.data.message : error.response.data
+        
+                this.serverError[0].errors = errorObj.hasOwnProperty('message') ? Object.values(error.response.data.errors) : new Object()
+                this.successMessage = ''
             })
         }
     } 

@@ -2,6 +2,8 @@
     <div class="flex-center">
         <form class="centered-form" action="#" @submit.prevent="validateBeforeSubmit">
             <h3>REGISTER</h3>
+            
+            
              <div v-if="serverError[0].status" class="alert alert-danger error-container">
                 <h5 class="alert-heading text-center">{{ serverError[0].title  }}</h5> <hr>
                 <div v-if="serverError[0].errors.length > 0">
@@ -10,6 +12,8 @@
                     </p>
                 </div>
             </div>
+
+
             <div class="row mt-4">
                 <div class="form-group col-md-12">
                     <label for="exampleInputEmail1" class="">Full name</label>
@@ -49,6 +53,7 @@ export default {
                 'title': '',
                 'errors': ''
             }],
+            successRegProcess: ''
         }
     },
     methods: {
@@ -67,7 +72,10 @@ export default {
                 password: this.password
             })
             .then(() => {
-                this.$router.push({ name: 'login' })
+                this.successRegProcess = 'Your registration was successful'
+                this.$router.push({ name: 'login', params: {
+                    dataSuccessMessage: this.successRegProcess
+                } })
             })
             .catch((error) => {
                 this.password = ''

@@ -87,11 +87,14 @@ form label {
     font-size: 14px;
 }
 .error-container .alert-heading { 
-    padding: 2px 0;
-    font-weight: bold;
+    padding: 2px 0; 
 }
-.error-container p { 
+.error-container p {
     font-size: 16px;
+} 
+.success-container p { 
+    font-size: 17px;
+    font-weight: bold;
 } 
 .input-error {
     font-size: 14px;
