@@ -20,15 +20,17 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/logout',  'AuthController@logout')->middleware('auth:api');
     Route::get('/todos', 'TodosController@index');
     Route::post('/todos', 'TodosController@store');
+    Route::patch('/todos/{todo}', 'TodosController@update');
+    Route::patch('/todos/check/all', 'TodosController@updateAll');
+    Route::delete('/todos/{todo}', 'TodosController@destroy');
+    Route::delete('/todos/delete/completed', 'TodosController@destroyCompleted');
 });
 
 Route::post('/login',  'AuthController@login');
 Route::post('/register',  'AuthController@register');
 
-Route::patch('/todos/{todo}', 'TodosController@update');
-Route::patch('/todos/check/all', 'TodosController@updateAll');
-Route::delete('/todos/{todo}', 'TodosController@destroy');
-Route::delete('/todos/delete/completed', 'TodosController@destroyCompleted');
+
+
 
 
 

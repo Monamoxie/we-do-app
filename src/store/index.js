@@ -82,6 +82,9 @@ export const store = new Vuex.Store({
         },
         destroyToken(state) {
             state.token = null
+        },
+        clearTodos(state) {
+            state.todos = []
         }
     },
 
@@ -223,6 +226,10 @@ export const store = new Vuex.Store({
             .catch(errors => {
                 console.log(errors)
             })
+        },
+
+        clearTodos(context) {
+            context.commit('clearTodos')
         }
     }
 })
