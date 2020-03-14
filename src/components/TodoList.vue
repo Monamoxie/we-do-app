@@ -10,7 +10,7 @@
                 </TodoItem>
             </transition-group>
         </div> 
-        <div v-else>
+        <div v-else class="flex-center p-3">
             No record found
         </div>
     </div>

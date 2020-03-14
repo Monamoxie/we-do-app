@@ -139,6 +139,7 @@ export const store = new Vuex.Store({
             }
         },
         retrieveTodos(context) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
             context.state.todosLoading = true
             axios.get('/todos')
             .then(response => {
@@ -150,6 +151,7 @@ export const store = new Vuex.Store({
             })
         },
         addTodo(context, todo) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
             context.state.newTodoLoading = true
             axios.post('/todos', {
                 title: todo.title,
@@ -164,7 +166,7 @@ export const store = new Vuex.Store({
             })
         },
         clearCompleted(context) {
-            
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
             // How to use filter and mpa to return the id of the completed
             const completed = store.state.todos
             .filter(todo => todo.completed == true)
@@ -186,6 +188,7 @@ export const store = new Vuex.Store({
             context.commit('updateFilter', filter)
         },
         checkAll(context, checked) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
             axios.patch('/todos/check/all', {
                 completed: checked
             })
@@ -198,7 +201,7 @@ export const store = new Vuex.Store({
         },
 
         deleteTodo(context, id) {
-          
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
             axios.delete('/todos/' + id)
             .then(() => {
                 context.commit('deleteTodo', id)
@@ -209,6 +212,7 @@ export const store = new Vuex.Store({
         },
 
         updateTodo(context, todo) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
             axios.patch('/todos/' + todo.id, {
                 title: todo.title,
                 completed: todo.completed
