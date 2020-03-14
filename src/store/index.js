@@ -230,6 +230,20 @@ export const store = new Vuex.Store({
 
         clearTodos(context) {
             context.commit('clearTodos')
+        },
+
+        retrieveName(context) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.state.token
+            return new Promise((resolve, reject) => {
+                axios.get('/user')
+                .then(response => { 
+                    resolve(response)
+                })
+                .catch(errors => {
+                    console.log(errors)
+                    reject(errors)
+                })
+            })
         }
     }
 })

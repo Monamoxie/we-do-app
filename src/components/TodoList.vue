@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
+      <div class="name-container">Welcome {{ name }}</div>
     <input class="form-control todo-input" type="text" placeholder="What do you want to do?" v-model="newTodo" @keyup.enter="addTodo"/>
-    
     <div class="mt-3 todos-wrapper" v-if="$store.state.todosLoading === false">
         <div v-if="todosFiltered.length">
             <transition-group name="fade" enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
@@ -60,11 +60,16 @@ export default {
         return {
             newTodo: '',
             idForTodo: 4, // Next added element will get id from here, 
+            name: '',
         }
     },
 
     created() {
         this.$store.dispatch('retrieveTodos')
+        this.$store.dispatch('retrieveName')
+        .then((response) => {
+            this.name = response.data.name
+        })
     },
  
     computed: {
@@ -238,6 +243,9 @@ export default {
   }
 }
 
+.name-container {
+    margin-bottom: 20px;
+}
     
 
  
