@@ -1,6 +1,6 @@
 <template>
     <div  class="flex-center">
-        <form class="centered-form" action="#" @submit.prevent="login">
+        <form class="centered-form" action="#" @submit.prevent="validateBeforeSubmit">
             <h3>LOGIN</h3>
             <div v-if="serverError[0].status" class="alert alert-danger error-container">
                 <h5 class="alert-heading text-center">{{ serverError[0].title  }}</h5> <hr>
@@ -49,6 +49,14 @@ export default {
         }
     },  
     methods: {
+        validateBeforeSubmit() {
+            this.$validator.validateAll().then(result => {
+                if(result) {
+                    this.login();
+                }
+                return false;
+            })
+        },
         login() {  
             this.$store.dispatch('retrieveToken', {
                 email: this.email,
