@@ -14,13 +14,15 @@
 </template>
 
 <script>
+ 
 export default {
     name: 'Master',
     computed: {
         loggedIn() {
             return this.$store.getters.loggedIn
         }
-    }
+    },
+     
 }
 </script>
 
@@ -79,5 +81,23 @@ form label {
     padding: 40px 35px 90px;
     width: 600px;
     max-width: 99%;
+}
+
+.error-container {
+    font-size: 14px;
+}
+.error-container .alert-heading { 
+    padding: 2px 0;
+    font-weight: bold;
+}
+.error-container p { 
+    font-size: 16px;
+} 
+.input-error {
+    font-size: 14px;
+    color: #900;
+}
+.input-error-highlight {
+    border: 1px solid #900;
 }
 </style>

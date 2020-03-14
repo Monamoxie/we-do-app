@@ -3,11 +3,13 @@ import VueRouter from 'vue-router'
 import routes from './routes'
 import Master from './components/layouts/Master'
 import {store} from './store/index.js'
+import VeeValidate from 'vee-validate';
 
 export const AppEventBus = new Vue()
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
+Vue.use(VeeValidate);
 
 
 const router = new VueRouter({

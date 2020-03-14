@@ -2,14 +2,26 @@
     <div  class="flex-center">
         <form class="centered-form" action="#" @submit.prevent="login">
             <h3>LOGIN</h3>
+            <div v-if="serverError[0].status" class="alert alert-danger error-container">
+                <h5 class="alert-heading text-center">{{ serverError[0].title  }}</h5> <hr>
+                <div v-if="serverError[0].errors.length > 0">
+                    <p v-for="(error, key) in serverError[0].errors" :key="key">
+                        {{ error[0] }}
+                    </p>
+                </div>
+            </div>
             <div class="row mt-4">
                 <div class="form-group col-md-12">
-                    <label for="exampleInputEmail1" class="">Email address</label>
-                    <input type="email" class="form-control"  placeholder="Enter email" v-model="email">
+                    <label for="exampleInputEmail1" class="">Email address</label> 
+                        <input type="email" id="email" name="email" class="form-control" 
+                         :class="{ 'input-error-highlight' : errors.has('email') }" v-validate="'required|email'"  placeholder="Enter email" v-model="email">
+                        <span class="input-error">{{ errors.first('email') }}</span>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" placeholder="Password" v-model="password">
+                        <input type="password" id="password" name="password" class="form-control" 
+                         :class="{ 'input-error-highlight' : errors.has('password') }" v-validate="'required'" placeholder="Password" v-model="password">
+                        <span class="input-error">{{ errors.first('password') }}</span>
                 </div>
                 <div class="col-md-12">
                    <button type="submit" class="btn btn-success btn-block p-2">Login</button>
@@ -19,16 +31,23 @@
     </div>
 </template>
 
-<script>
+<script> 
+ 
+
 export default {
     name: "login",
 
     data() {
         return {
             email: '',
-            password: ''
+            password: '',
+            serverError: [{
+                'status': false,
+                'title': '',
+                'errors': ''
+            }],
         }
-    },
+    },  
     methods: {
         login() {  
             this.$store.dispatch('retrieveToken', {
@@ -38,7 +57,13 @@ export default {
             .then(() => {
                 this.$router.push({ name: 'todo' })
             })
+            .catch((error) => {
+                this.password = ''
+                this.serverError[0].status = true 
+                this.serverError[0].title = error.response.data.message
+                this.serverError[0].errors = Object.values(error.response.data.errors)
+            })
         }
-    }
+    } 
 }
 </script>
