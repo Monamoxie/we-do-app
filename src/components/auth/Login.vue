@@ -30,7 +30,14 @@
                         <span class="input-error">{{ errors.first('password') }}</span>
                 </div>
                 <div class="col-md-12">
-                   <button type="submit" class="btn btn-success btn-block p-2">Login</button>
+                   <button type="submit" class="btn btn-success btn-block p-2" :disabled="processing">
+                        <div class="" v-if="processing">
+                            <div class="lds-ring ring-white" 
+                                ><div></div><div></div><div></div><div></div>
+                            </div>
+                        </div>
+                        <div class="" v-else> Login</div>
+                    </button>
                 </div>
             </div>
         </form>
@@ -56,7 +63,8 @@ export default {
                 'title': '',
                 'errors': ''
             }],
-            successMessage: this.dataSuccessMessage
+            successMessage: this.dataSuccessMessage,
+            processing: false
         }
     },  
     methods: {
@@ -69,6 +77,7 @@ export default {
             })
         },
         login() {  
+            this.processing = true
             this.$store.dispatch('retrieveToken', {
                 email: this.email,
                 password: this.password
@@ -89,6 +98,9 @@ export default {
                     this.serverError[0].errors = new Object()
                 }  
                 this.successMessage = ''
+            })
+            .finally(() => {
+                this.processing = false
             })
         }
     } 

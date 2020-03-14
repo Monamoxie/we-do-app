@@ -33,8 +33,15 @@
                     :class="{ 'input-error-highlight' : errors.has('password') }" v-validate="'required'" placeholder="Password" v-model="password">
                     <span class="input-error">{{ errors.first('password') }}</span>
                 </div>
-                <div class="col-md-12">
-                   <button type="submit" class="btn btn-success btn-block p-2">Create Account</button>
+                <div class="col-md-12"> 
+                    <button type="submit" class="btn btn-success btn-block p-2" :disabled="processing">
+                        <div class="" v-if="processing">
+                            <div class="lds-ring ring-white" 
+                                ><div></div><div></div><div></div><div></div>
+                            </div>
+                        </div>
+                        <div class="" v-else> Create Account </div>
+                    </button>
                 </div>
             </div>
         </form>
@@ -53,7 +60,8 @@ export default {
                 'title': '',
                 'errors': ''
             }],
-            successRegProcess: ''
+            successRegProcess: '',
+            processing: false
         }
     }, 
     methods: {
@@ -66,7 +74,8 @@ export default {
             })
         },
         register() {
-              this.$store.dispatch('register', {
+            this.processing = true
+            this.$store.dispatch('register', {
                 name: this.name,
                 email: this.email,
                 password: this.password
@@ -82,6 +91,9 @@ export default {
                 this.serverError[0].status = true 
                 this.serverError[0].title = error.response.data.message
                 this.serverError[0].errors = Object.values(error.response.data.errors)
+            })
+            .finally(() => {
+                this.processing = false
             })
         }
     }
