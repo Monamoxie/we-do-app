@@ -8,8 +8,12 @@
             <li v-if="!loggedIn"><router-link :to="{ name : 'register' }">Register</router-link></li>
             <li v-if="loggedIn"><router-link :to="{ name : 'logout' }">Logout</router-link></li>
         </ul>
-        
-       <router-view></router-view>   
+        <transition name="router-animation" 
+        enter-active-class="animated fadeIn" 
+        leave-active-class="animated fadeOut" mode="out-in">
+            <router-view></router-view>
+        </transition>
+          
     </div>
 </template>
 
@@ -27,6 +31,10 @@ export default {
 </script>
 
 <style>
+ 
+    @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -102,5 +110,8 @@ form label {
 }
 .input-error-highlight {
     border: 1px solid #900;
+}
+.page-wrapper {
+    animation-duration: 0.4s;
 }
 </style>

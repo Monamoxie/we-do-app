@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-center">
+    <div class="page-wrapper flex-center">
         <form class="centered-form" action="#" @submit.prevent="validateBeforeSubmit">
             <h3>REGISTER</h3>
             
@@ -55,7 +55,7 @@ export default {
             }],
             successRegProcess: ''
         }
-    },
+    }, 
     methods: {
         validateBeforeSubmit() {
             this.$validator.validateAll().then(result => {

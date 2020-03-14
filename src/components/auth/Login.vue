@@ -1,5 +1,5 @@
 <template>
-    <div  class="flex-center">
+    <div class="page-wrapper flex-center">
         <form class="centered-form" action="#" @submit.prevent="validateBeforeSubmit">
             <h3>LOGIN</h3>
 
@@ -79,9 +79,15 @@ export default {
             .catch((error) => { 
                 this.serverError[0].status = true         
                 const errorObj = error.response.data
-                this.serverError[0].title = errorObj.hasOwnProperty('message') ? error.response.data.message : error.response.data
-        
-                this.serverError[0].errors = errorObj.hasOwnProperty('message') ? Object.values(error.response.data.errors) : new Object()
+                 
+                if(typeof errorObj === 'object' && 'message' in errorObj) {
+                    this.serverError[0].title = error.response.data.message
+                    this.serverError[0].errors = Object.values(error.response.data.errors)
+                }
+                else {
+                    this.serverError[0].title = error.response.data
+                    this.serverError[0].errors = new Object()
+                }  
                 this.successMessage = ''
             })
         }
