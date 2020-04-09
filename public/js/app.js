@@ -2695,76 +2695,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Master',
   computed: {
@@ -5230,7 +5160,7 @@ exports = ___CSS_LOADER_API_IMPORT___(false);
 exports.push([module.i, "@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css);"]);
 exports.push([module.i, "@import url(https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css);"]);
 // Module
-exports.push([module.i, "\n* {\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n}\n#app {\n    -webkit-font-smoothing:antialised;\n    -moz-osx-font-smoothing: antialised;\n    color: #2c3e50;\n    font-size: 24px;\n    height: 100vh;\n}\n.flex-center {\n    display:-webkit-box;\n    display:-ms-flexbox;\n    display:flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.top-nav { \n    list-style: none;   \n    /* justify-content:flex-end; */\n    background: #f4f8fa; \n    margin-bottom: 24px;  \n    border: 3px solid red;\n}\n.top-nav a  {\n    /* color: #626b6f;\n    padding: 0 15px;\n    font-size: 14px;\n    font-weight: 600;\n    letter-spacing: .1em;\n    text-decoration: none;\n    text-transform: uppercase; */\n}\nform label {\n    font-size: 16px;\n    font-weight: bold;\n    margin-bottom: 8px;\n}\n.centered-form {\n    margin-top: 40px;\n    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n            box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    padding: 40px 35px 90px;\n    width: 600px;\n    max-width: 99%;\n}\n.logo {\n    display: block;\n    margin: auto;\n    width: 40px !important;\n    height: 40px !important;\n}\n.error-container {\n    font-size: 14px;\n}\n.error-container .alert-heading { \n    padding: 2px 0;\n}\n.error-container p {\n    font-size: 16px;\n}\n.success-container p { \n    font-size: 17px;\n}\n.input-error {\n    font-size: 14px;\n    color: #900;\n}\n.input-error-highlight {\n    border: 1px solid #900;\n}\n.page-wrapper {\n    -webkit-animation-duration: 0.4s;\n            animation-duration: 0.4s;\n}\n.lds-ring {\n  display: inline-block;\n  position: relative;\n  width: 50px;\n  height: 50px;\n}\n.lds-ring div {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  display: block;\n  position: absolute;\n  width: 32px;\n  height: 32px;\n  margin: 3px auto;\n  margin-top: 12px;\n  border: 3px solid rgb(4, 209, 4);\n  border-radius: 50%;\n  -webkit-animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n          animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n  border-color: rgb(4, 209, 4) transparent transparent transparent;\n}\n.ring-white div {\n    border: 3px solid rgb(255, 255, 255);   \n    border-color: rgb(255, 255, 255) transparent transparent transparent;\n}\n.lds-ring div:nth-child(1) {\n  -webkit-animation-delay: -0.45s;\n          animation-delay: -0.45s;\n}\n.lds-ring div:nth-child(2) {\n  -webkit-animation-delay: -0.3s;\n          animation-delay: -0.3s;\n}\n.lds-ring div:nth-child(3) {\n  -webkit-animation-delay: -0.15s;\n          animation-delay: -0.15s;\n}\n@-webkit-keyframes lds-ring {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@keyframes lds-ring {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n* {\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n}\n#app {\n    -webkit-font-smoothing:antialised;\n    -moz-osx-font-smoothing: antialised;\n    color: #2c3e50;\n    font-size: 24px;\n    height: 100vh;\n}\n.flex-center {\n    display:-webkit-box;\n    display:-ms-flexbox;\n    display:flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.sidebar {\n}\n.top-nav { \n    list-style: none;   \n    /* justify-content:flex-end; */\n    background: #f4f8fa; \n    margin-bottom: 24px;  \n    border: 3px solid red;\n}\n.top-nav a  {\n    /* color: #626b6f;\n    padding: 0 15px;\n    font-size: 14px;\n    font-weight: 600;\n    letter-spacing: .1em;\n    text-decoration: none;\n    text-transform: uppercase; */\n}\nform label {\n    font-size: 16px;\n    font-weight: bold;\n    margin-bottom: 8px;\n}\n.centered-form {\n    margin-top: 40px;\n    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n            box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    padding: 40px 35px 90px;\n    width: 600px;\n    max-width: 99%;\n}\n.logo {\n    display: block;\n    margin: auto;\n    width: 40px !important;\n    height: 40px !important;\n}\n.error-container {\n    font-size: 14px;\n}\n.error-container .alert-heading { \n    padding: 2px 0;\n}\n.error-container p {\n    font-size: 16px;\n}\n.success-container p { \n    font-size: 17px;\n}\n.input-error {\n    font-size: 14px;\n    color: #900;\n}\n.input-error-highlight {\n    border: 1px solid #900;\n}\n.page-wrapper {\n    -webkit-animation-duration: 0.4s;\n            animation-duration: 0.4s;\n}\n.lds-ring {\n  display: inline-block;\n  position: relative;\n  width: 50px;\n  height: 50px;\n}\n.lds-ring div {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  display: block;\n  position: absolute;\n  width: 32px;\n  height: 32px;\n  margin: 3px auto;\n  margin-top: 12px;\n  border: 3px solid rgb(4, 209, 4);\n  border-radius: 50%;\n  -webkit-animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n          animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n  border-color: rgb(4, 209, 4) transparent transparent transparent;\n}\n.ring-white div {\n    border: 3px solid rgb(255, 255, 255);   \n    border-color: rgb(255, 255, 255) transparent transparent transparent;\n}\n.lds-ring div:nth-child(1) {\n  -webkit-animation-delay: -0.45s;\n          animation-delay: -0.45s;\n}\n.lds-ring div:nth-child(2) {\n  -webkit-animation-delay: -0.3s;\n          animation-delay: -0.3s;\n}\n.lds-ring div:nth-child(3) {\n  -webkit-animation-delay: -0.15s;\n          animation-delay: -0.15s;\n}\n@-webkit-keyframes lds-ring {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@keyframes lds-ring {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -35550,7 +35480,10 @@ var render = function() {
   return _c("div", { attrs: { id: "app" } }, [
     _c(
       "nav",
-      { staticClass: "navbar navbar-expand-lg navbar-light bg-light shadow " },
+      {
+        staticClass:
+          "navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow "
+      },
       [
         _vm._m(0),
         _vm._v(" "),
@@ -35673,18 +35606,19 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", {}, [
+    _c("div", { staticClass: "row" }, [
       _vm.loggedIn
-        ? _c(
-            "nav",
-            { staticClass: "col-md-3 d-none d-md-block bg-light sidebar" },
-            [_vm._m(2)]
-          )
+        ? _c("nav", { staticClass: "col-md-3 d-none d-md-block sidebar" }, [
+            _c("div", { staticClass: "sidebar-sticky" })
+          ])
         : _vm._e(),
       _vm._v(" "),
       _c(
         "div",
-        { class: _vm.loggedIn ? "col-md-9" : "col-md-12" },
+        {
+          class: _vm.loggedIn ? "col-md-9" : "col-md-12",
+          staticStyle: { border: "2px solid red" }
+        },
         [
           _c(
             "transition",
@@ -35738,109 +35672,6 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "sidebar-sticky" }, [
-      _c("ul", { staticClass: "nav flex-column" }, [
-        _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "nav-link active", attrs: { href: "#" } }, [
-            _c("span", { attrs: { "data-feather": "home" } }),
-            _vm._v("\n                    Dashboard "),
-            _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-            _c("span", { attrs: { "data-feather": "file" } }),
-            _vm._v("\n                    Orders\n                    ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-            _c("span", { attrs: { "data-feather": "shopping-cart" } }),
-            _vm._v("\n                    Products\n                    ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-            _c("span", { attrs: { "data-feather": "users" } }),
-            _vm._v("\n                    Customers\n                    ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-            _c("span", { attrs: { "data-feather": "bar-chart-2" } }),
-            _vm._v("\n                    Reports\n                    ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-            _c("span", { attrs: { "data-feather": "layers" } }),
-            _vm._v("\n                    Integrations\n                    ")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "h6",
-        {
-          staticClass:
-            "sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"
-        },
-        [
-          _c("span", [_vm._v("Saved reports")]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "d-flex align-items-center text-muted",
-              attrs: { href: "#" }
-            },
-            [_c("span", { attrs: { "data-feather": "plus-circle" } })]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c("ul", { staticClass: "nav flex-column mb-2" }, [
-        _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-            _c("span", { attrs: { "data-feather": "file-text" } }),
-            _vm._v("\n                    Current month\n                    ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-            _c("span", { attrs: { "data-feather": "file-text" } }),
-            _vm._v("\n                    Last quarter\n                    ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-            _c("span", { attrs: { "data-feather": "file-text" } }),
-            _vm._v(
-              "\n                    Social engagement\n                    "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-            _c("span", { attrs: { "data-feather": "file-text" } }),
-            _vm._v("\n                    Year-end sale\n                    ")
-          ])
-        ])
-      ])
-    ])
   }
 ]
 render._withStripped = true
