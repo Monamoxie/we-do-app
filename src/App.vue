@@ -1,6 +1,5 @@
 <template>
   <div id="app" class="container">
-    <img alt="Vue logo" src="./assets/logo.png" class="logo"> 
     <TodoList></TodoList>
   </div>
 </template>
@@ -25,14 +24,10 @@ export default {
 * {
   box-sizing: border-box;
 }
-.container {
+/* .container {
   max-width: 600px;
   margin: 0px auto;
-}
+} */
  
-.logo {
-  height: 75px;
-  display: block;
-  margin: 20px auto;
-}
+ 
 </style>

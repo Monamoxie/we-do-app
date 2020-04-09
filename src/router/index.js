@@ -1,9 +1,9 @@
-import App from './App.vue'
-import LandingPage from './components/marketing/LandingPage'
-import About from './components/marketing/About'
-import Login from './components/auth/Login'
-import Register from './components/auth/Register'
-import Logout from './components/auth/Logout'
+import App from '../App.vue'
+import LandingPage from '../components/marketing/LandingPage'
+import About from '../components/marketing/About'
+import Login from '../components/auth/Login'
+import Register from '../components/auth/Register'
+import Logout from '../components/auth/Logout'
 
 const routes = [
     {path: '/', name: 'home',  component: LandingPage },

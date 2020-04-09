@@ -1,6 +1,6 @@
 <template>
   <div class="page-wrapper hello">
-      <div class="name-container">Welcome {{ name }}</div>
+    <div class="name-container">Welcome {{ name }}</div>
     <input class="form-control todo-input" type="text" placeholder="What do you want to do?" v-model="newTodo" @keyup.enter="addTodo"/>
     <div class="mt-3 todos-wrapper" v-if="$store.state.todosLoading === false">
         <div v-if="todosFiltered.length">
@@ -201,16 +201,9 @@ export default {
         background: rgb(4, 209, 4);
         color: #fff;
     }
-
-
-
-
-  
-
+ 
 .name-container {
     margin-bottom: 20px;
 }
     
-
- 
 </style>
