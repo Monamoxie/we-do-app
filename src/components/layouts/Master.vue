@@ -67,11 +67,6 @@ export default {
     @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
     @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css');
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
 #app {
     -webkit-font-smoothing:antialised;
@@ -87,7 +82,9 @@ export default {
 }
 
 .sidebar {
-    
+    /* c70ab4 */
+    background: rgba(199,10,180, 0.8);
+    color: #fff;
 }
 .top-nav { 
     list-style: none;   
@@ -145,9 +142,7 @@ form label {
 .input-error-highlight {
     border: 1px solid #900;
 }
-.page-wrapper {
-    animation-duration: 0.4s;
-}
+
 
 
   .lds-ring {
