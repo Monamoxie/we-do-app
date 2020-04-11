@@ -9,15 +9,10 @@
 		<meta name="theme-color" content="#1b1b1b">
 		<meta name="msapplication-navbutton-color" content="#1b1b1b">
 		<meta name="apple-mobile-web-app-status-bar-style" content="#1b1b1b">
-        <title>ISEJ Exchange</title>
+        <title>WEDO App</title>
         <link rel="shortcut icon" href="{{  asset('images/favicon.png') }}" type="image/x-icon"> 
         <script src="{{ asset('js/app.js') }}" defer></script> 
-        <link rel="stylesheet" type="text/css" href="/css/app.css">
-        <!--[if lt IE 9]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			<script src="js/vendor/html5shiv.js"></script>
-			<script src="vendor/respond.js"></script>
-		<![endif]-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
     </head>
     <body>
         <div id="app"> </div>   
