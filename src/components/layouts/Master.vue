@@ -4,7 +4,7 @@
          <nav class="navbar navbar-expand-lg fixed-top flex-md-nowrap navbar-light bg-light shadow ">
             
             <div class="navbar-brand col-sm-3 col-md-3 mr-0">
-                <a href="#">
+                <a href="/">
                     <img alt="logo" src="/img/logo.png" class="logo" > 
                 </a>
             </div>
@@ -15,8 +15,8 @@
                 </button>
 
                  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><router-link class="nav-link" :to="{ name : 'home' }">Home</router-link></li>
+                    <ul class="navbar-nav ml-auto top-nav">
+                        <li class="nav-item" :class="this.$route.path === '/' ? 'active' : '' "><router-link class="nav-link" :to="{ name : 'home' }">Home</router-link></li>
                         <li class="nav-item"><router-link class="nav-link" :to="{ name : 'todo' }">App</router-link></li>
                         <li class="nav-item"><router-link class="nav-link" :to="{ name : 'about' }">About</router-link></li>
                         <li class="nav-item" v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'login' }">Login</router-link></li>
@@ -35,7 +35,7 @@
                 </div>
             </nav>
 
-            <div :class="loggedIn ? 'col-md-9' : 'col-md-12' " style="border: 2px solid red">
+            <div :class="loggedIn ? 'col-md-9' : 'col-md-12' ">
                 <transition name="router-animation" 
                 enter-active-class="animated fadeIn" 
                 leave-active-class="animated fadeOut" mode="out-in"> 
@@ -45,6 +45,19 @@
 
         </div>
 
+        <footer class="py-3 bg-primary">   
+            <div class="container"> 
+                <div class="row">
+                    <div class="col-12 col-md text-center">
+                        <a href="/">
+                            <img alt="logo" src="/img/logo.png" class="logo" > 
+                        </a>
+                        <p class="m-0 p-0 font-smaller"> All rights reserved </p>  
+                        <small class="d-block">&copy; {{ new Date().getFullYear() }} </small>
+                    </div> 
+                </div>
+            </div>
+        </footer>
 
     </div>
 </template>
@@ -58,6 +71,7 @@ export default {
             return this.$store.getters.loggedIn
         }
     },
+
      
 }
 </script>
@@ -81,27 +95,22 @@ export default {
     justify-content: center;
 }
 
-.sidebar {
-    /* c70ab4 */
+.sidebar { 
     background: rgba(199,10,180, 0.8);
     color: #fff;
 }
 .top-nav { 
     list-style: none;   
-    /* justify-content:flex-end; */
-    background: #f4f8fa; 
-    margin-bottom: 24px;  
-    border: 3px solid red;
+    justify-content:flex-end;  
 }
 
 .top-nav a  {
-    /* color: #626b6f;
-    padding: 0 15px;
+    color: #626b6f; 
     font-size: 14px;
     font-weight: 600;
     letter-spacing: .1em;
     text-decoration: none;
-    text-transform: uppercase; */
+    text-transform: uppercase;
 }
 
 form label {

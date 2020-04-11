@@ -18,16 +18,4 @@ export default {
   }
 }
 </script>
-
-<style>
-
-* {
-  box-sizing: border-box;
-}
-/* .container {
-  max-width: 600px;
-  margin: 0px auto;
-} */
  
- 
-</style>

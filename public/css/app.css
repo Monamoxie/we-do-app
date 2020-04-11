@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html,body {
+    width: 100%; 
+    height: 100%;
+    overflow-x: hidden;
+}
+.page-wrapper {
+    animation-duration: 0.4s;
+     margin-top: 90px;
+    /*padding: 20px 10px;*/
+    
+}
+.page-header-image {
+    /* Full height */
+    position: relative;  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%; 
+    height: 700px; 
+    margin-top: -110px;
+}
+.header-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(199,10,180, 0.2);
+}
+.nav-item {
+    /* padding: 10px 12px; */
+    margin-right: 22px;
+}
+li.active, 
+li:hover {
+    background: rgba(199,10,180, 1);
+    border-radius: 5px;
+}
+li.active a,
+li:hover a {
+    color: #fff !important;
+}
+.header-content {
+    position: absolute;
+    width: 100%;
+    margin-top: 10%;  
+    z-index: 22;
+}
+.position-relative { 
+    z-index: 268;
+}
+.header-img-banner {
+    text-align: right;
+    
+}
+.header-img-text {
+    width: 600px;
+    max-width: 95%;
+    margin-top: 35%;
+    text-align: center;
+    padding: 60px 30px;
+    background: rgba(0, 0, 0, 0.7);
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+.header-img-text h2 {
+    font-size: 42px;
+    color: rgb(199,10,180);
+    color: #ffffff;
+}
+.header-img-text p {
+    margin-top: 40px;
+    color: #cccccc;
+}
+
+
+.product-device {
+    position: absolute;
+    right: 10%;
+    bottom: -30%;
+    width: 300px;
+    height: 540px;
+    background-color: #333;
+    border-radius: 21px;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+  }
+  
+  .product-device::before {
+    position: absolute;
+    top: 10%;
+    right: 10px;
+    bottom: 10%;
+    left: 10px;
+    content: "";
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 5px;
+  }
+  
+  .product-device-2 {
+    top: -25%;
+    right: auto;
+    bottom: 0;
+    left: 5%;
+    background-color: #e5e5e5;
+  }
+  
+  
+  /*
+   * Extra utilities
+   */
+  
+  .flex-equal > * {
+    -ms-flex: 1;
+    flex: 1;
+  }
+  @media (min-width: 768px) {
+    .flex-md-equal > * {
+      -ms-flex: 1;
+      flex: 1;
+    }
+  }
+  
+  .overflow-hidden { overflow: hidden; }
+  .product-showcase img {
+    width: 350px;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
+  .product-showcase img.ext-small {
+      width: auto;
+      height: 95%;
+  }
+  footer {
+    font-size: 16px; 
+    letter-spacing: 1px;
+    color: #ffffff !important;
+    /* background: #e4e4e4 !important;  */
+  }
