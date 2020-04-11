@@ -59,7 +59,7 @@ export default {
     data () {
         return {
             newTodo: '',
-            idForTodo: 4, // Next added element will get id from here, 
+            idForTodo: 4,  
             name: '',
         }
     },
@@ -99,8 +99,7 @@ export default {
     }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+ 
 <style lang="scss">
     .todo-input {
         width: 100%;

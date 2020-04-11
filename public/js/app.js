@@ -2072,7 +2072,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import { AppEventBus } from '../main';
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'todo-check-all',
   computed: {
@@ -2104,7 +2103,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import { AppEventBus } from '../main';
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'todo-clear-completed',
   computed: {
@@ -2217,8 +2215,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      // Since this is a child component, We have to manually retrieve each property of the todo object into the data method
-      // Data has already been passed in as a prop
       'id': this.todo.id,
       'title': this.todo.title,
       'completed': this.todo.completed,
@@ -2233,13 +2229,6 @@ __webpack_require__.r(__webpack_exports__);
     _resources_js_app__WEBPACK_IMPORTED_MODULE_2__["AppEventBus"].$off('pluralize', this.handlePluralize);
   },
   watch: {
-    /// We need to do something here only if one of the props coming from the parent component changes
-    //  SO we use a watch
-    // Each child component sets it up and waits
-    // The moment the checkbox in the parent composer is clicked.
-    // This child compoent, like all it's siblings will act accordingly
-    // They all will assume or mark themselves as completed
-    // So the wathcer only acts when they receive command from outside
     checkAll: function checkAll() {
       if (this.checkAll) this.completed = true;else this.completed = this.todo.completed;
     }
@@ -2253,36 +2242,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     removeTodo: function removeTodo(id) {
-      // Very necessary when you have a case where a set of child components need to fire up an event that is within their parent component
-      //  So instead of localizing each event to a component, I keep these events in it's parent component, 
-      // Then when I need to use that event within the child, I simply emit it and it get's set to the parent who handles it from there
-      // AppEventBus.$emit('removeTodo', id)
       this.$store.dispatch('deleteTodo', id);
     },
     editTodo: function editTodo() {
-      // Since editing an item is local to this compoent alone, we can simply follow a different approach.
-      // By localizing the edit functionality. Allow it to only be fire up from within the component itself with emiting as the approach above
       this.beforeEditCache = this.title;
       this.editing = true;
     },
     submitEdit: function submitEdit() {
       if (this.title.trim() == '') this.beforeEditCache;
-      this.editing = false; // We need to emit an event to update the master array objects that exists (todos)
-      // Otherwise called "The Single Source of Truth"
-      // Remember the todos (The Single Source of Truth) hosts all the existings objects
-      // And the only thing passed in here (todo) is an object containing only the properties local to this item
-      // We need to update the super array of objects that exists within the parent component
-      // And to do this, we simply emit an event to the parent component to handle that functionality
-      // AppEventBus.$emit('submitEdit', {
-      //     'index': this.index,
-      //     'todo': {
-      //         'id': this.id,
-      //         'title': this.title,
-      //         'completed': this.completed,
-      //         'editing': this.editing
-      //     }
-      // })
-
+      this.editing = false;
       this.$store.dispatch('updateTodo', {
         'id': this.id,
         'title': this.title,
@@ -2411,7 +2379,6 @@ __webpack_require__.r(__webpack_exports__);
     return {
       newTodo: '',
       idForTodo: 4,
-      // Next added element will get id from here, 
       name: ''
     };
   },
@@ -34664,32 +34631,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/About.vue?vue&type=template&id=c226fde6&":
-/*!***********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/About.vue?vue&type=template&id=c226fde6& ***!
-  \***********************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "page-wrapper flex-center" }, [
-    _vm._v("\n    About page\n")
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/LandingPage.vue?vue&type=template&id=54f74f74&":
 /*!*****************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/LandingPage.vue?vue&type=template&id=54f74f74& ***!
@@ -52494,59 +52435,6 @@ module.exports = "/images/pexels-photo.png?17605c247d4d2fac7126cc3c5803a633";
 
 /***/ }),
 
-/***/ "./src/components/About.vue":
-/*!**********************************!*\
-  !*** ./src/components/About.vue ***!
-  \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _About_vue_vue_type_template_id_c226fde6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./About.vue?vue&type=template&id=c226fde6& */ "./src/components/About.vue?vue&type=template&id=c226fde6&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
-  _About_vue_vue_type_template_id_c226fde6___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _About_vue_vue_type_template_id_c226fde6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "src/components/About.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./src/components/About.vue?vue&type=template&id=c226fde6&":
-/*!*****************************************************************!*\
-  !*** ./src/components/About.vue?vue&type=template&id=c226fde6& ***!
-  \*****************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_About_vue_vue_type_template_id_c226fde6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./About.vue?vue&type=template&id=c226fde6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/About.vue?vue&type=template&id=c226fde6&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_About_vue_vue_type_template_id_c226fde6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_About_vue_vue_type_template_id_c226fde6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./src/components/LandingPage.vue":
 /*!****************************************!*\
   !*** ./src/components/LandingPage.vue ***!
@@ -53353,11 +53241,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../App.vue */ "./src/App.vue");
 /* harmony import */ var _components_LandingPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/LandingPage */ "./src/components/LandingPage.vue");
-/* harmony import */ var _components_About__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/About */ "./src/components/About.vue");
-/* harmony import */ var _components_auth_Login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/auth/Login */ "./src/components/auth/Login.vue");
-/* harmony import */ var _components_auth_Register__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/auth/Register */ "./src/components/auth/Register.vue");
-/* harmony import */ var _components_auth_Logout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/auth/Logout */ "./src/components/auth/Logout.vue");
-
+/* harmony import */ var _components_auth_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/auth/Login */ "./src/components/auth/Login.vue");
+/* harmony import */ var _components_auth_Register__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/auth/Register */ "./src/components/auth/Register.vue");
+/* harmony import */ var _components_auth_Logout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/auth/Logout */ "./src/components/auth/Logout.vue");
 
 
 
@@ -53375,13 +53261,9 @@ var routes = [{
     requiresAuth: true
   }
 }, {
-  path: '/about',
-  name: 'about',
-  component: _components_About__WEBPACK_IMPORTED_MODULE_2__["default"]
-}, {
   path: '/login',
   name: 'login',
-  component: _components_auth_Login__WEBPACK_IMPORTED_MODULE_3__["default"],
+  component: _components_auth_Login__WEBPACK_IMPORTED_MODULE_2__["default"],
   props: true,
   meta: {
     requiresVisitor: true
@@ -53389,14 +53271,14 @@ var routes = [{
 }, {
   path: '/register',
   name: 'register',
-  component: _components_auth_Register__WEBPACK_IMPORTED_MODULE_4__["default"],
+  component: _components_auth_Register__WEBPACK_IMPORTED_MODULE_3__["default"],
   meta: {
     requiresVisitor: true
   }
 }, {
   path: '/logout',
   name: 'logout',
-  component: _components_auth_Logout__WEBPACK_IMPORTED_MODULE_5__["default"],
+  component: _components_auth_Logout__WEBPACK_IMPORTED_MODULE_4__["default"],
   meta: {
     requiresAuth: true
   }

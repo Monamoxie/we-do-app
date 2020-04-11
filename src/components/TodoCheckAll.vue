@@ -6,8 +6,7 @@
     </div>
 </template>
 
-<script>
-// import { AppEventBus } from '../main';
+<script> 
 export default {
     name: 'todo-check-all',
     computed: {

@@ -5,21 +5,18 @@
 </template>
 
 <script>
+    export default {
+        name: 'todo-clear-completed',
+        computed: {
+            showClearCompletedButton() {
+                return this.$store.getters.showClearCompletedButton
+            }
+        },
 
-// import { AppEventBus } from '../main';
-
-export default {
-    name: 'todo-clear-completed',
-    computed: {
-        showClearCompletedButton() {
-            return this.$store.getters.showClearCompletedButton
+        methods: {
+            clearCompleted() { 
+                this.$store.dispatch('clearCompleted')
+            }
         }
-    },
-
-    methods: {
-        clearCompleted() { 
-            this.$store.dispatch('clearCompleted')
-        }
-    }
 }
 </script>
