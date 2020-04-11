@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import routes from '../../src/router/index'
-import Master from '../../src/components/layouts/Master'
-import {store} from '../../src/store/index.js'
+import routes from './router/index'
+import Master from './components/layouts/Master'
+import {store} from './store/index.js'
 import VeeValidate from 'vee-validate'
 
 export const AppEventBus = new Vue()

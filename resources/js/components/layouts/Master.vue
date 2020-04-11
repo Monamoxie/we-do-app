@@ -5,7 +5,7 @@
             
             <div class="navbar-brand col-sm-3 col-md-3 mr-0">
                 <a href="/">
-                    <img alt="logo" src="../../assets/img/logo.png" class="logo" > 
+                    <img alt="logo" class="logo" src="../../../img/logo.png"> 
                 </a>
             </div>
             
@@ -49,7 +49,7 @@
                 <div class="row">
                     <div class="col-12 col-md text-center">
                         <a href="/">
-                            <img alt="logo" src="../../assets/img/logo.png" class="logo" > 
+                            <img alt="logo" src="../../../img/logo.png" class="logo" > 
                         </a>
                         <p class="m-0 p-0 font-smaller"> All rights reserved </p>  
                         <small class="d-block">&copy; {{ new Date().getFullYear() }} </small>
@@ -67,7 +67,7 @@ export default {
     name: 'Master',
     data() {
         return {
-            sidebarImage: 'background-image:url("' + require('../../assets/img/lady.png') + ' ")'
+            sidebarImage: 'background-image:url("' + require('../../../img/lady.png') + ' ")'
         }
     },
     computed: {

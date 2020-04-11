@@ -18,7 +18,7 @@
 
 <script>
 
-import {AppEventBus} from '../../resources/js/app'
+import {AppEventBus} from '../app'
 
 export default {
     name: 'TodoItem',

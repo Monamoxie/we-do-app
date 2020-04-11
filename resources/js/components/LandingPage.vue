@@ -9,7 +9,7 @@
                         <div class="header-content ">
                             <div class="row">
                                 <div class="col-md-6 col-sm-12 header-img-banner">
-                                    <img src="../assets/img/lady.png" alt="Image 1">
+                                    <img src="../../img/lady.png" alt="Image 1">
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="header-img-text">
@@ -40,7 +40,7 @@
                         <p class="lead">And an even wittier subheading.</p>
                     </div>
                     <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                        <img src="../assets/img/pexels-photo.png">
+                        <img src="../../img/pexels-photo.png">
                     </div>
                 </div>
                 <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
@@ -49,7 +49,7 @@
                     <p class="lead">And an even wittier subheading.</p>
                     </div>
                     <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                         <img src="../assets/img/light-bulb.png">
+                         <img src="../../img/light-bulb.png">
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                     <p class="lead">And an even wittier subheading </p>
                     </div>
                     <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                        <img src="../assets/img/pan-africa.png" class="ext-small">
+                        <img src="../../img/pan-africa.png" class="ext-small">
                     </div>
                 </div>
                 <div class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
@@ -70,7 +70,7 @@
                     <p class="lead">And an even wittier subheading.</p>
                     </div>
                     <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                        <img src="../assets/img/adult.png" class="">
+                        <img src="../../img/adult.png" class="">
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
 export default {
     data() {
         return {
-            backgroundImage: 'background-image:url("' + require('../assets/img/header.jpg') + ' ")'
+            backgroundImage: 'background-image:url("' + require('../../img/header.jpg') + ' ")'
         }
     },
    
