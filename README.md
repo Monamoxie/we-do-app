@@ -1,4 +1,4 @@
-![Logo](src/assets/img/logo.png)
+![Logo](resources/img/logo.png)
 
 A simple Single Page Application task setter built with Laravel/Vuejs. Designed to be simple, efficient and easily scalable. Supports API authentication with Laravel Passport
  
@@ -17,7 +17,7 @@ A simple Single Page Application task setter built with Laravel/Vuejs. Designed 
 * Enable tags and catgories
  
 
-![Image 1](src/assets/img/app-snapshot.png) 
+![Image 1](resources/img/app-snapshot.png) 
 
 # LICENSE 
 MIT License
