@@ -35965,7 +35965,7 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _vm.loggedIn
+      _vm.loggedIn && this.$route.path !== "/logout"
         ? _c(
             "nav",
             {
@@ -35978,7 +35978,12 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { class: _vm.loggedIn ? "col-md-9" : "col-md-12" },
+        {
+          class:
+            _vm.loggedIn && this.$route.path !== "/logout"
+              ? "col-md-9"
+              : "col-md-12"
+        },
         [
           _c(
             "transition",

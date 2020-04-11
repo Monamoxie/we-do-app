@@ -28,13 +28,13 @@
         </nav>
 
         <div class="row">
-            <nav v-if="loggedIn" class="col-md-3 d-none d-md-block  p-0 sidebar" :style="sidebarImage ? sidebarImage : '' ">
+            <nav v-if="loggedIn && this.$route.path !== '/logout' " class="col-md-3 d-none d-md-block  p-0 sidebar" :style="sidebarImage ? sidebarImage : '' ">
                 <div class="sidebar-sticky" >
                     <div class="sidebar-sticky-content"></div>
                 </div>
             </nav>
 
-            <div :class="loggedIn ? 'col-md-9' : 'col-md-12' ">
+            <div :class="loggedIn && this.$route.path !== '/logout' ? 'col-md-9' : 'col-md-12' ">
                 <transition name="router-animation" 
                 enter-active-class="animated fadeIn" 
                 leave-active-class="animated fadeOut" mode="out-in"> 
