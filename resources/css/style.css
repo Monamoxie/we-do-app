@@ -141,3 +141,23 @@ li:hover a {
   .mb-70 {
     margin-bottom: 70px;
   }
+  
+.sidebar {  
+    color: #fff;
+    position: relative;  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden; 
+}
+.sidebar-sticky {
+  background: rgba(0,0,0,0.8); 
+  z-index: 2222;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+.sidebar-sticky-content {
+    margin-top: 25%;
+    padding: 15px 20px;
+}

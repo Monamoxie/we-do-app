@@ -28,9 +28,9 @@
         </nav>
 
         <div class="row">
-            <nav v-if="loggedIn" class="col-md-3 d-none d-md-block sidebar">
-                <div class="sidebar-sticky" :style="backgroundImage ? backgroundImage : '' ">
-                     
+            <nav v-if="loggedIn" class="col-md-3 d-none d-md-block  p-0 sidebar" :style="sidebarImage ? sidebarImage : '' ">
+                <div class="sidebar-sticky" >
+                    <div class="sidebar-sticky-content"></div>
                 </div>
             </nav>
 
@@ -38,7 +38,7 @@
                 <transition name="router-animation" 
                 enter-active-class="animated fadeIn" 
                 leave-active-class="animated fadeOut" mode="out-in"> 
-                    <router-view :backgroundImage="backgroundImage"></router-view>
+                    <router-view></router-view>
                 </transition>
             </div>
 
@@ -67,7 +67,7 @@ export default {
     name: 'Master',
     data() {
         return {
-            backgroundImage: 'background-image:url("' + require('../../assets/img/lady.png') + ' ")'
+            sidebarImage: 'background-image:url("' + require('../../assets/img/lady.png') + ' ")'
         }
     },
     computed: {
@@ -99,10 +99,6 @@ export default {
     justify-content: center;
 }
 
-.sidebar { 
-    background: rgba(199,10,180, 0.8);
-    color: #fff;
-}
 .top-nav { 
     list-style: none;   
     justify-content:flex-end;  

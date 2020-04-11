@@ -1,5 +1,5 @@
 <template>
-    <div class="page-wrapper"> 
+    <div  class="page-wrapper"> 
          <div class="wrapper">
 
             <div class="page-header clear-filter">
@@ -80,12 +80,11 @@
 </template>
 <script>
 export default {
-    
-    props: {
-        backgroundImage: {
-            type: String
+    data() {
+        return {
+            backgroundImage: 'background-image:url("' + require('../assets/img/header.jpg') + ' ")'
         }
-    }
+    },
    
 }
 </script>

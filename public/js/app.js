@@ -2046,10 +2046,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    backgroundImage: {
-      type: String
-    }
+  data: function data() {
+    return {
+      backgroundImage: 'background-image:url("' + __webpack_require__(/*! ../assets/img/header.jpg */ "./src/assets/img/header.jpg") + ' ")'
+    };
   }
 });
 
@@ -2227,7 +2227,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    console.log(_resources_js_app__WEBPACK_IMPORTED_MODULE_2__["AppEventBus"]);
     _resources_js_app__WEBPACK_IMPORTED_MODULE_2__["AppEventBus"].$on('pluralize', this.handlePluralize);
   },
   beforeDestroy: function beforeDestroy() {
@@ -2809,7 +2808,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Master',
   data: function data() {
     return {
-      backgroundImage: 'background-image:url("' + __webpack_require__(/*! ../../assets/img/lady.png */ "./src/assets/img/lady.png") + ' ")'
+      sidebarImage: 'background-image:url("' + __webpack_require__(/*! ../../assets/img/lady.png */ "./src/assets/img/lady.png") + ' ")'
     };
   },
   computed: {
@@ -5257,7 +5256,7 @@ exports = ___CSS_LOADER_API_IMPORT___(false);
 exports.push([module.i, "@import url(https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css);"]);
 exports.push([module.i, "@import url(https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css);"]);
 // Module
-exports.push([module.i, "\n#app {\n    -webkit-font-smoothing:antialised;\n    -moz-osx-font-smoothing: antialised;\n    color: #2c3e50;\n    font-size: 24px;\n    height: 100vh;\n}\n.flex-center {\n    display:flex;\n    justify-content: center;\n}\n.sidebar { \n    background: rgba(199,10,180, 0.8);\n    color: #fff;\n}\n.top-nav { \n    list-style: none;   \n    justify-content:flex-end;\n}\n.top-nav a  {\n    color: #626b6f; \n    font-size: 14px;\n    font-weight: 600;\n    letter-spacing: .1em;\n    text-decoration: none;\n    text-transform: uppercase;\n}\nform label {\n    font-size: 16px;\n    font-weight: bold;\n    margin-bottom: 8px;\n}\n.centered-form {\n    margin-top: 40px;\n    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    padding: 40px 35px 90px;\n    width: 600px;\n    max-width: 99%;\n}\n.logo {\n    display: block;\n    margin: auto;\n    width: 40px !important;\n    height: 40px !important;\n}\n.error-container {\n    font-size: 14px;\n}\n.error-container .alert-heading { \n    padding: 2px 0;\n}\n.error-container p {\n    font-size: 16px;\n}\n.success-container p { \n    font-size: 17px;\n}\n.input-error {\n    font-size: 14px;\n    color: #900;\n}\n.input-error-highlight {\n    border: 1px solid #900;\n}\n.lds-ring {\n  display: inline-block;\n  position: relative;\n  width: 50px;\n  height: 50px;\n}\n.lds-ring div {\n  box-sizing: border-box;\n  display: block;\n  position: absolute;\n  width: 32px;\n  height: 32px;\n  margin: 3px auto;\n  margin-top: 12px;\n  border: 3px solid rgb(4, 209, 4);\n  border-radius: 50%;\n  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n  border-color: rgb(4, 209, 4) transparent transparent transparent;\n}\n.ring-white div {\n    border: 3px solid rgb(255, 255, 255);   \n    border-color: rgb(255, 255, 255) transparent transparent transparent;\n}\n.lds-ring div:nth-child(1) {\n  animation-delay: -0.45s;\n}\n.lds-ring div:nth-child(2) {\n  animation-delay: -0.3s;\n}\n.lds-ring div:nth-child(3) {\n  animation-delay: -0.15s;\n}\n@keyframes lds-ring {\n0% {\n    transform: rotate(0deg);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n#app {\n    -webkit-font-smoothing:antialised;\n    -moz-osx-font-smoothing: antialised;\n    color: #2c3e50;\n    font-size: 24px;\n    height: 100vh;\n}\n.flex-center {\n    display:flex;\n    justify-content: center;\n}\n.top-nav { \n    list-style: none;   \n    justify-content:flex-end;\n}\n.top-nav a  {\n    color: #626b6f; \n    font-size: 14px;\n    font-weight: 600;\n    letter-spacing: .1em;\n    text-decoration: none;\n    text-transform: uppercase;\n}\nform label {\n    font-size: 16px;\n    font-weight: bold;\n    margin-bottom: 8px;\n}\n.centered-form {\n    margin-top: 40px;\n    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    padding: 40px 35px 90px;\n    width: 600px;\n    max-width: 99%;\n}\n.logo {\n    display: block;\n    margin: auto;\n    width: 40px !important;\n    height: 40px !important;\n}\n.error-container {\n    font-size: 14px;\n}\n.error-container .alert-heading { \n    padding: 2px 0;\n}\n.error-container p {\n    font-size: 16px;\n}\n.success-container p { \n    font-size: 17px;\n}\n.input-error {\n    font-size: 14px;\n    color: #900;\n}\n.input-error-highlight {\n    border: 1px solid #900;\n}\n.lds-ring {\n  display: inline-block;\n  position: relative;\n  width: 50px;\n  height: 50px;\n}\n.lds-ring div {\n  box-sizing: border-box;\n  display: block;\n  position: absolute;\n  width: 32px;\n  height: 32px;\n  margin: 3px auto;\n  margin-top: 12px;\n  border: 3px solid rgb(4, 209, 4);\n  border-radius: 50%;\n  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n  border-color: rgb(4, 209, 4) transparent transparent transparent;\n}\n.ring-white div {\n    border: 3px solid rgb(255, 255, 255);   \n    border-color: rgb(255, 255, 255) transparent transparent transparent;\n}\n.lds-ring div:nth-child(1) {\n  animation-delay: -0.45s;\n}\n.lds-ring div:nth-child(2) {\n  animation-delay: -0.3s;\n}\n.lds-ring div:nth-child(3) {\n  animation-delay: -0.15s;\n}\n@keyframes lds-ring {\n0% {\n    transform: rotate(0deg);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -35205,7 +35204,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", [
-      _c("button", { on: { click: _vm.pluralize } }, [_vm._v("Plural")]),
+      _c("button", { on: { click: _vm.pluralize } }, [_vm._v("Pluralize")]),
       _vm._v(" "),
       _c(
         "span",
@@ -35970,12 +35969,14 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _vm.loggedIn
-        ? _c("nav", { staticClass: "col-md-3 d-none d-md-block sidebar" }, [
-            _c("div", {
-              staticClass: "sidebar-sticky",
-              style: _vm.backgroundImage ? _vm.backgroundImage : ""
-            })
-          ])
+        ? _c(
+            "nav",
+            {
+              staticClass: "col-md-3 d-none d-md-block  p-0 sidebar",
+              style: _vm.sidebarImage ? _vm.sidebarImage : ""
+            },
+            [_vm._m(2)]
+          )
         : _vm._e(),
       _vm._v(" "),
       _c(
@@ -35992,11 +35993,7 @@ var render = function() {
                 mode: "out-in"
               }
             },
-            [
-              _c("router-view", {
-                attrs: { backgroundImage: _vm.backgroundImage }
-              })
-            ],
+            [_c("router-view")],
             1
           )
         ],
@@ -36008,7 +36005,7 @@ var render = function() {
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-12 col-md text-center" }, [
-            _vm._m(2),
+            _vm._m(3),
             _vm._v(" "),
             _c("p", { staticClass: "m-0 p-0 font-smaller" }, [
               _vm._v(" All rights reserved ")
@@ -36056,6 +36053,14 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "sidebar-sticky" }, [
+      _c("div", { staticClass: "sidebar-sticky-content" })
+    ])
   },
   function() {
     var _vm = this
@@ -52418,6 +52423,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 module.exports = "/images/adult.png?a6c8033b1d453eb29613155cfb3ab9ae";
+
+/***/ }),
+
+/***/ "./src/assets/img/header.jpg":
+/*!***********************************!*\
+  !*** ./src/assets/img/header.jpg ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/header.jpg?44274a4597a19a5a5ec4c32258e04f25";
 
 /***/ }),
 

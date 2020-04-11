@@ -9,7 +9,7 @@
                 @blur="submitEdit()" @keyup.enter="submitEdit()" @keyup.esc="cancelEdit()" v-focus/>
         </div>
         <div>
-            <button @click="pluralize">Plural</button>
+            <button @click="pluralize">Pluralize</button>
             <span class="remove-item" @click="removeTodo(id)">&times;</span>
         </div>
     </div>
@@ -49,8 +49,7 @@ export default {
         }
     },
 
-    created() { 
-        console.log(AppEventBus)
+    created() {  
         AppEventBus.$on('pluralize', this.handlePluralize)
     },
 
