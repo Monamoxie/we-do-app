@@ -18,7 +18,7 @@
 
 <script>
 
-import {AppEventBus} from '../main'
+import {AppEventBus} from '../../resources/js/app'
 
 export default {
     name: 'TodoItem',
@@ -49,8 +49,8 @@ export default {
         }
     },
 
-    created() {
-        // Register the event listener on created
+    created() { 
+        console.log(AppEventBus)
         AppEventBus.$on('pluralize', this.handlePluralize)
     },
 

@@ -6,7 +6,8 @@ import {store} from '../../src/store/index.js'
 import VeeValidate from 'vee-validate'
 
 export const AppEventBus = new Vue()
-
+ 
+ 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(VeeValidate);
@@ -48,6 +49,7 @@ new Vue({
   render: h => h(Master),
   router,
   store, 
+  AppEventBus,
   template: '<Master/>'
 }).$mount('#app')
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="page-wrapper">
+    <div class="page-wrapper mb-70">
         
     </div>
 </template>

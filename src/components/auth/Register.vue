@@ -1,5 +1,5 @@
 <template>
-    <div class="page-wrapper flex-center">
+    <div class="page-wrapper flex-center mb-70">
         <form class="centered-form" action="#" @submit.prevent="validateBeforeSubmit">
             <h3>REGISTER</h3>
             

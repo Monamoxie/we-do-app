@@ -1,5 +1,5 @@
 <template>
-    <div  class="page-wrapper"> 
+    <div class="page-wrapper"> 
          <div class="wrapper">
 
             <div class="page-header clear-filter">
@@ -61,7 +61,7 @@
                     <p class="lead">And an even wittier subheading </p>
                     </div>
                     <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                        <img src="../assets/img/now-logo.png" class="ext-small">
+                        <img src="../assets/img/pan-africa.png" class="ext-small">
                     </div>
                 </div>
                 <div class="bg-primary mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
@@ -70,7 +70,7 @@
                     <p class="lead">And an even wittier subheading.</p>
                     </div>
                     <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                        <img src="../assets/img/pan-africa.png" class="ext-small">
+                        <img src="../assets/img/adult.png" class="">
                     </div>
                 </div>
             </div>
@@ -80,11 +80,12 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
-            backgroundImage: 'background-image:url("' + require('../assets/img/header.jpg') + ' ")'
+    
+    props: {
+        backgroundImage: {
+            type: String
         }
-    },
+    }
    
 }
 </script>

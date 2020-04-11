@@ -17,11 +17,10 @@
                  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav ml-auto top-nav">
                         <li class="nav-item" :class="this.$route.path === '/' ? 'active' : '' "><router-link class="nav-link" :to="{ name : 'home' }">Home</router-link></li>
-                        <li class="nav-item"><router-link class="nav-link" :to="{ name : 'todo' }">App</router-link></li>
-                        <li class="nav-item"><router-link class="nav-link" :to="{ name : 'about' }">About</router-link></li>
-                        <li class="nav-item" v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'login' }">Login</router-link></li>
-                        <li class="nav-item" v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'register' }">Register</router-link></li>
-                        <li class="nav-item" v-if="loggedIn"><router-link  class="nav-link" :to="{ name : 'logout' }">Logout</router-link></li>
+                        <li class="nav-item" :class="this.$route.path === '/todo' ? 'active' : '' "><router-link class="nav-link" :to="{ name : 'todo' }">App</router-link></li>
+                        <li class="nav-item" :class="this.$route.path === '/login' ? 'active' : '' " v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'login' }">Login</router-link></li>
+                        <li class="nav-item" :class="this.$route.path === '/register' ? 'active' : '' " v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'register' }">Register</router-link></li>
+                        <li class="nav-item" :class="this.$route.path === '/logout' ? 'active' : '' " v-if="loggedIn"><router-link  class="nav-link" :to="{ name : 'logout' }">Logout</router-link></li>
                     </ul>
                 </div>
             </div>
@@ -30,7 +29,7 @@
 
         <div class="row">
             <nav v-if="loggedIn" class="col-md-3 d-none d-md-block sidebar">
-                <div class="sidebar-sticky">
+                <div class="sidebar-sticky" :style="backgroundImage ? backgroundImage : '' ">
                      
                 </div>
             </nav>
@@ -39,7 +38,7 @@
                 <transition name="router-animation" 
                 enter-active-class="animated fadeIn" 
                 leave-active-class="animated fadeOut" mode="out-in"> 
-                    <router-view></router-view>
+                    <router-view :backgroundImage="backgroundImage"></router-view>
                 </transition>
             </div>
 
@@ -66,6 +65,11 @@
  
 export default {
     name: 'Master',
+    data() {
+        return {
+            backgroundImage: 'background-image:url("' + require('../../assets/img/lady.png') + ' ")'
+        }
+    },
     computed: {
         loggedIn() {
             return this.$store.getters.loggedIn

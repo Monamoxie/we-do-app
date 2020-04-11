@@ -11,8 +11,6 @@ html,body {
 .page-wrapper {
     animation-duration: 0.4s;
      margin-top: 90px;
-    /*padding: 20px 10px;*/
-    
 }
 .page-header-image {
     /* Full height */
@@ -134,9 +132,12 @@ li:hover a {
       width: auto;
       height: 95%;
   }
+ 
   footer {
     font-size: 16px; 
     letter-spacing: 1px;
-    color: #ffffff !important;
-    /* background: #e4e4e4 !important;  */
+    color: #ffffff !important; 
+  }
+  .mb-70 {
+    margin-bottom: 70px;
   }

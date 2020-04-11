@@ -2046,10 +2046,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      backgroundImage: 'background-image:url("' + __webpack_require__(/*! ../assets/img/header.jpg */ "./src/assets/img/header.jpg") + ' ")'
-    };
+  props: {
+    backgroundImage: {
+      type: String
+    }
   }
 });
 
@@ -2177,8 +2177,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_number_constructor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_constructor__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es_string_trim__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.string.trim */ "./node_modules/core-js/modules/es.string.trim.js");
 /* harmony import */ var core_js_modules_es_string_trim__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_trim__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../main */ "./src/main.js");
-/* harmony import */ var _main__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_main__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _resources_js_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../resources/js/app */ "./resources/js/app.js");
 
 
 //
@@ -2228,11 +2227,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    // Register the event listener on created
-    _main__WEBPACK_IMPORTED_MODULE_2__["AppEventBus"].$on('pluralize', this.handlePluralize);
+    console.log(_resources_js_app__WEBPACK_IMPORTED_MODULE_2__["AppEventBus"]);
+    _resources_js_app__WEBPACK_IMPORTED_MODULE_2__["AppEventBus"].$on('pluralize', this.handlePluralize);
   },
   beforeDestroy: function beforeDestroy() {
-    _main__WEBPACK_IMPORTED_MODULE_2__["AppEventBus"].$off('pluralize', this.handlePluralize);
+    _resources_js_app__WEBPACK_IMPORTED_MODULE_2__["AppEventBus"].$off('pluralize', this.handlePluralize);
   },
   watch: {
     /// We need to do something here only if one of the props coming from the parent component changes
@@ -2298,7 +2297,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     pluralize: function pluralize() {
       this.title = this.title + 's';
-      _main__WEBPACK_IMPORTED_MODULE_2__["AppEventBus"].$emit('pluralize');
+      _resources_js_app__WEBPACK_IMPORTED_MODULE_2__["AppEventBus"].$emit('pluralize');
     },
     handlePluralize: function handlePluralize() {
       this.$store.dispatch('updateTodo', {
@@ -2806,9 +2805,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Master',
+  data: function data() {
+    return {
+      backgroundImage: 'background-image:url("' + __webpack_require__(/*! ../../assets/img/lady.png */ "./src/assets/img/lady.png") + ' ")'
+    };
+  },
   computed: {
     loggedIn: function loggedIn() {
       return this.$store.getters.loggedIn;
@@ -34908,7 +34911,7 @@ var staticRenderFns = [
               [
                 _c("img", {
                   staticClass: "ext-small",
-                  attrs: { src: __webpack_require__(/*! ../assets/img/now-logo.png */ "./src/assets/img/now-logo.png") }
+                  attrs: { src: __webpack_require__(/*! ../assets/img/pan-africa.png */ "./src/assets/img/pan-africa.png") }
                 })
               ]
             )
@@ -34942,8 +34945,7 @@ var staticRenderFns = [
               },
               [
                 _c("img", {
-                  staticClass: "ext-small",
-                  attrs: { src: __webpack_require__(/*! ../assets/img/pan-africa.png */ "./src/assets/img/pan-africa.png") }
+                  attrs: { src: __webpack_require__(/*! ../assets/img/adult.png */ "./src/assets/img/adult.png") }
                 })
               ]
             )
@@ -35399,7 +35401,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "page-wrapper flex-center" }, [
+  return _c("div", { staticClass: "page-wrapper flex-center mb-70" }, [
     _c(
       "form",
       {
@@ -35593,7 +35595,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "page-wrapper" })
+  return _c("div", { staticClass: "page-wrapper mb-70" })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -35617,7 +35619,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "page-wrapper flex-center" }, [
+  return _c("div", { staticClass: "page-wrapper flex-center mb-70" }, [
     _c(
       "form",
       {
@@ -35880,7 +35882,10 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  { staticClass: "nav-item" },
+                  {
+                    staticClass: "nav-item",
+                    class: this.$route.path === "/todo" ? "active" : ""
+                  },
                   [
                     _c(
                       "router-link",
@@ -35894,26 +35899,13 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link",
-                        attrs: { to: { name: "about" } }
-                      },
-                      [_vm._v("About")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
                 !_vm.loggedIn
                   ? _c(
                       "li",
-                      { staticClass: "nav-item" },
+                      {
+                        staticClass: "nav-item",
+                        class: this.$route.path === "/login" ? "active" : ""
+                      },
                       [
                         _c(
                           "router-link",
@@ -35931,7 +35923,10 @@ var render = function() {
                 !_vm.loggedIn
                   ? _c(
                       "li",
-                      { staticClass: "nav-item" },
+                      {
+                        staticClass: "nav-item",
+                        class: this.$route.path === "/register" ? "active" : ""
+                      },
                       [
                         _c(
                           "router-link",
@@ -35949,7 +35944,10 @@ var render = function() {
                 _vm.loggedIn
                   ? _c(
                       "li",
-                      { staticClass: "nav-item" },
+                      {
+                        staticClass: "nav-item",
+                        class: this.$route.path === "/logout" ? "active" : ""
+                      },
                       [
                         _c(
                           "router-link",
@@ -35973,7 +35971,10 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _vm.loggedIn
         ? _c("nav", { staticClass: "col-md-3 d-none d-md-block sidebar" }, [
-            _c("div", { staticClass: "sidebar-sticky" })
+            _c("div", {
+              staticClass: "sidebar-sticky",
+              style: _vm.backgroundImage ? _vm.backgroundImage : ""
+            })
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -35991,7 +35992,11 @@ var render = function() {
                 mode: "out-in"
               }
             },
-            [_c("router-view")],
+            [
+              _c("router-view", {
+                attrs: { backgroundImage: _vm.backgroundImage }
+              })
+            ],
             1
           )
         ],
@@ -52296,6 +52301,7 @@ new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   },
   router: router,
   store: _src_store_index_js__WEBPACK_IMPORTED_MODULE_5__["store"],
+  AppEventBus: AppEventBus,
   template: '<Master/>'
 }).$mount('#app');
 
@@ -52404,14 +52410,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/assets/img/header.jpg":
-/*!***********************************!*\
-  !*** ./src/assets/img/header.jpg ***!
-  \***********************************/
+/***/ "./src/assets/img/adult.png":
+/*!**********************************!*\
+  !*** ./src/assets/img/adult.png ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/header.jpg?44274a4597a19a5a5ec4c32258e04f25";
+module.exports = "/images/adult.png?a6c8033b1d453eb29613155cfb3ab9ae";
 
 /***/ }),
 
@@ -52434,17 +52440,6 @@ module.exports = "/images/lady.png?7e4d571c35221aca89e3677bccf6bae6";
 /***/ (function(module, exports) {
 
 module.exports = "/images/light-bulb.png?3eaa4e67bf0602f44e678815aa88ad31";
-
-/***/ }),
-
-/***/ "./src/assets/img/now-logo.png":
-/*!*************************************!*\
-  !*** ./src/assets/img/now-logo.png ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/now-logo.png?06e0fc6563685a66896afba4a3b71b2a";
 
 /***/ }),
 
@@ -53313,17 +53308,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Master_vue_vue_type_template_id_25047ed8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Master_vue_vue_type_template_id_25047ed8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./src/main.js":
-/*!*********************!*\
-  !*** ./src/main.js ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
 
 
 
