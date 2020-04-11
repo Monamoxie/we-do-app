@@ -20,7 +20,7 @@
                         <li class="nav-item" :class="this.$route.path === '/todo' ? 'active' : '' "><router-link class="nav-link" :to="{ name : 'todo' }">App</router-link></li>
                         <li class="nav-item" :class="this.$route.path === '/login' ? 'active' : '' " v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'login' }">Login</router-link></li>
                         <li class="nav-item" :class="this.$route.path === '/register' ? 'active' : '' " v-if="!loggedIn"><router-link class="nav-link" :to="{ name : 'register' }">Register</router-link></li>
-                        <li class="nav-item" :class="this.$route.path === '/logout' ? 'active' : '' " v-if="loggedIn"><router-link  class="nav-link" :to="{ name : 'logout' }">Logout</router-link></li>
+                        <li class="nav-item" v-if="loggedIn"><router-link  class="nav-link" :to="{ name : 'logout' }">Logout</router-link></li>
                     </ul>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 <div class="row">
                     <div class="col-12 col-md text-center">
                         <a href="/">
-                            <img alt="logo" src="/img/logo.png" class="logo" > 
+                            <img alt="logo" src="../../assets/img/logo.png" class="logo" > 
                         </a>
                         <p class="m-0 p-0 font-smaller"> All rights reserved </p>  
                         <small class="d-block">&copy; {{ new Date().getFullYear() }} </small>

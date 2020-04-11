@@ -35943,10 +35943,7 @@ var render = function() {
                 _vm.loggedIn
                   ? _c(
                       "li",
-                      {
-                        staticClass: "nav-item",
-                        class: this.$route.path === "/logout" ? "active" : ""
-                      },
+                      { staticClass: "nav-item" },
                       [
                         _c(
                           "router-link",
@@ -36069,7 +36066,7 @@ var staticRenderFns = [
     return _c("a", { attrs: { href: "/" } }, [
       _c("img", {
         staticClass: "logo",
-        attrs: { alt: "logo", src: "/img/logo.png" }
+        attrs: { alt: "logo", src: __webpack_require__(/*! ../../assets/img/logo.png */ "./src/assets/img/logo.png") }
       })
     ])
   }
