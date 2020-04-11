@@ -5,7 +5,7 @@
             
             <div class="navbar-brand col-sm-3 col-md-3 mr-0">
                 <a href="/">
-                    <img alt="logo" src="/img/logo.png" class="logo" > 
+                    <img alt="logo" src="../../assets/img/logo.png" class="logo" > 
                 </a>
             </div>
             

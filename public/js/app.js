@@ -36029,7 +36029,7 @@ var staticRenderFns = [
       _c("a", { attrs: { href: "/" } }, [
         _c("img", {
           staticClass: "logo",
-          attrs: { alt: "logo", src: "/img/logo.png" }
+          attrs: { alt: "logo", src: __webpack_require__(/*! ../../assets/img/logo.png */ "./src/assets/img/logo.png") }
         })
       ])
     ])
@@ -52456,6 +52456,17 @@ module.exports = "/images/lady.png?7e4d571c35221aca89e3677bccf6bae6";
 /***/ (function(module, exports) {
 
 module.exports = "/images/light-bulb.png?3eaa4e67bf0602f44e678815aa88ad31";
+
+/***/ }),
+
+/***/ "./src/assets/img/logo.png":
+/*!*********************************!*\
+  !*** ./src/assets/img/logo.png ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo.png?25f0b4c3a6eb2390babe7cb7dd71eedd";
 
 /***/ }),
 
