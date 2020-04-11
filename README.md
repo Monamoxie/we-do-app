@@ -1,25 +1,20 @@
 ![Logo](src/assets/img/logo.png)
 
-A simple web app for creating and managing list of tasks built with VueJs and Laravel. 
-It comes pre bundled with the ability to 
-
-* Track and view current share price at any given time
-* View highest price reached for that day
-* View lowest price dropped to for that day
-* Opening and closing price and 
-* Total volume of shares traded
-
+A simple Single Page Application task setter built with Laravel/Vuejs. Designed to be simple, efficient and easily scalable. Supports API authentication with Laravel Passport
+ 
 # Technology Stack
 
-* Vue Js framework
-* CSS Bootstrap
-* Axios HTTP Client
-* The World Trading Data API
+* PHP/Laravel
+* JavaScript/Vue Js
+* Twitter Bootstrap
+* Animate CSS 
 
 # TODO
 
-* Render charts with the data sets
-* Compare analytics for 2 or more companies on the stock market 
+* Render history graphs for tasks
+* Group tasks by date
+* Group tasks by priorites
+* Enable tags and catgories
  
 
 ![Image 1](src/assets/img/app-snapshot.png) 
