@@ -6,7 +6,7 @@
 <script>
     export default {
         name: 'logout',
-        created() {
+        created() { 
             this.$store.dispatch('clearTodos')
             this.$store.dispatch('destroyToken')
             .then(() => {

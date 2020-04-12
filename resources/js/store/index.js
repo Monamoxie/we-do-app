@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://127.0.0.1:9090/api';
+axios.defaults.baseURL = process.env.MIX_APP_API_URL;
 
 Vue.use(Vuex)
 
