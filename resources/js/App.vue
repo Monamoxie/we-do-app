@@ -4,15 +4,12 @@
   </div>
 </template>
 
-<script>
-// Define components here
-// import HelloWorld from './components/HelloWorld.vue'
+<script> 
 import TodoList from './components/TodoList.vue'
 
 export default {
   name: 'App',
-
-  //Register components here
+ 
   components: { 
     TodoList
   }
