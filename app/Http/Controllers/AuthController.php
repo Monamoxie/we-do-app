@@ -25,31 +25,7 @@ class AuthController extends Controller
             $user = User::where('email', $request->email)->first();
             $user->token = $user->createToken('user')->accessToken;
             return response()->json($user, 200);    
-        }
-
-        $http =  new Client;
-
-        try {
-            $response =  $http->post('http://127.0.0.1:9090/oauth/token', [
-                'form_params' => [
-                    'grant_type' => 'password',
-                    'client_id' => 2,
-                    'client_secret' => 'eVlnmMr10TgmcygDdni9C72OwoXWpjsZu5wyApie',
-                    'username' => $request->username,
-                    'password' => $request->password                    
-                ]
-            ]);
-            return $response->getBody();
-        }
-        catch (\GuzzleHttp\Exception\BadResponseException $e) {
-            if($e->getCode() === 400) {
-                return response()->json('Invalid Request. Please enter a username or a password', $e->getCode());
-            }
-            else if($e->getCode() === 401) {
-                return response()->json('Invalid credentials. Please try again', $e->getCode());
-            }
-            return response()->json('An error occured', $e->getCode());
-        }
+        } 
     }
 
     public function register(Request $request) 
